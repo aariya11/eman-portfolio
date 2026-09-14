@@ -60,6 +60,37 @@ export default function Home() {
             />
           </section>
 
+          {/* Private Mentorship CTA Section */}
+          <section aria-label="1-on-1 Mentorship" className="w-full max-w-[1080px] mx-auto py-24 px-6 md:px-10 border-hairline-t">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+              <div className="lg:col-span-8 space-y-4">
+                <span className="style-meta-tag block text-white/40">
+                  Private Mentorship &amp; Advisory
+                </span>
+                <h3 className="font-editorial italic text-3xl md:text-4xl font-light text-white leading-tight">
+                  Master institutional order flow &amp; risk engineering with 1-on-1 private guidance.
+                </h3>
+                <p className="style-copy-body max-w-xl text-white/60">
+                  Direct access to live trade preparation, session playbooks, risk mitigation protocols, and psychological discipline frameworks. Limited to committed operators. Direct desk WhatsApp: +92 315 6828906.
+                </p>
+              </div>
+
+              <div className="lg:col-span-4 lg:text-right">
+                <a
+                  href="https://wa.me/923156828906?text=Hello%20Eman,%20I%20am%20interested%20in%20your%201-on-1%20Trading%20Mentorship%20program."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 px-6 py-3.5 bg-white text-black style-meta-tag text-[9px] font-bold tracking-[0.24em] hover:bg-white/90 transition-all group"
+                  data-cursor="pointer"
+                >
+                  <span className="w-2 h-2 rounded-full bg-emerald-600 group-hover:scale-125 transition-transform" />
+                  <span>GET MENTORSHIP</span>
+                  <span>→</span>
+                </a>
+              </div>
+            </div>
+          </section>
+
           {/* Minimalist Steven Mengin Style Footer */}
           <footer className="w-full max-w-[1080px] mx-auto py-16 px-6 md:px-10 border-hairline-t flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-white/40">
             <p className="style-meta-tag text-[7.5px]">

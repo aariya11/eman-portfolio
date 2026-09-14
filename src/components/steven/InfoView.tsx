@@ -103,14 +103,38 @@ export function InfoView({ onBackToWork }: InfoViewProps) {
           </div>
         </div>
 
-        {/* Right Column: Direct Consultation Form */}
-        <div className="lg:col-span-4 border border-white/10 p-6 md:p-8 bg-black">
-          <span className="style-meta-tag block text-white/40 mb-2">
-            Direct Dossier
-          </span>
-          <h3 className="font-editorial italic text-2xl font-light text-white mb-6">
-            Initiate Contact
-          </h3>
+        {/* Right Column: 1-on-1 Mentorship & Direct Consultation Form */}
+        <div className="lg:col-span-4 space-y-6">
+          {/* Mentorship Direct WhatsApp Box */}
+          <div className="border border-white/20 p-6 bg-white/[0.02]">
+            <span className="style-meta-tag block text-white/40 mb-1">
+              Private Advisory
+            </span>
+            <h3 className="font-editorial italic text-2xl font-light text-white mb-2">
+              1-on-1 Mentorship
+            </h3>
+            <p className="style-copy-body text-white/70 mb-5 leading-[16px]">
+              Direct one-on-one mentorship covering institutional order delivery, liquidity engineering, and mathematical risk management. Connect directly via WhatsApp.
+            </p>
+            <a
+              href="https://wa.me/923156828906?text=Hello%20Eman,%20I%20am%20interested%20in%20your%201-on-1%20Trading%20Mentorship%20program."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full py-3 bg-white text-black style-meta-tag text-[8.5px] font-bold tracking-[0.24em] hover:bg-white/90 transition-colors flex items-center justify-center gap-2"
+              data-cursor="pointer"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
+              <span>INQUIRE VIA WHATSAPP (+92 315 6828906)</span>
+            </a>
+          </div>
+
+          <div className="border border-white/10 p-6 md:p-8 bg-black">
+            <span className="style-meta-tag block text-white/40 mb-2">
+              Direct Dossier
+            </span>
+            <h3 className="font-editorial italic text-2xl font-light text-white mb-6">
+              Initiate Contact
+            </h3>
 
           {isSubmitted ? (
             <div className="py-10 space-y-3 text-center">
@@ -201,13 +225,14 @@ export function InfoView({ onBackToWork }: InfoViewProps) {
             </form>
           )}
 
-          <div className="pt-6 mt-6 border-hairline-t">
-            <button
-              onClick={onBackToWork}
-              className="style-meta-tag text-white/35 hover:text-white transition-colors text-[7.5px]"
-            >
-              ← Return to Project Showcase
-            </button>
+            <div className="pt-6 mt-6 border-hairline-t">
+              <button
+                onClick={onBackToWork}
+                className="style-meta-tag text-white/35 hover:text-white transition-colors text-[7.5px]"
+              >
+                ← Return to Project Showcase
+              </button>
+            </div>
           </div>
         </div>
       </div>

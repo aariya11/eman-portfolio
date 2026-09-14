@@ -41,7 +41,11 @@ export function StevenHUD({ currentView, onToggleView }: StevenHUDProps) {
   };
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (typeof window !== "undefined" && (window as any).lenis) {
+      (window as any).lenis.scrollTo(0, { duration: 1.3 });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   // Hero fade: fades between scroll 0 and 260px
@@ -66,11 +70,22 @@ export function StevenHUD({ currentView, onToggleView }: StevenHUDProps) {
         </button>
       </motion.div>
 
-      {/* 2. Fixed Top-Right: "Info" / "Work" Button */}
-      <div className="fixed top-6 right-6 md:right-10 z-50">
+      {/* 2. Fixed Top-Right: "Get Mentorship" + "Info" / "Work" Button */}
+      <div className="fixed top-5 md:top-6 right-4 md:right-10 z-50 flex items-center gap-3 md:gap-4">
+        <a
+          href="https://wa.me/923156828906?text=Hello%20Eman,%20I%20am%20interested%20in%20your%201-on-1%20Trading%20Mentorship%20program."
+          target="_blank"
+          rel="noopener noreferrer"
+          className="style-meta-tag flex items-center gap-2 px-2.5 sm:px-3 py-1.5 border border-white/25 hover:border-white bg-black/70 backdrop-blur-md text-white transition-all text-[8px] sm:text-[8.5px] tracking-[0.22em] group"
+          data-cursor="pointer"
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 group-hover:scale-125 transition-transform animate-pulse" />
+          <span>GET MENTORSHIP</span>
+        </a>
+
         <button
           onClick={onToggleView}
-          className="style-meta-tag text-white hover:text-white/60 transition-colors py-1.5 px-2 tracking-[0.24em] text-[10px]"
+          className="style-meta-tag text-white hover:text-white/60 transition-colors py-1.5 px-2 tracking-[0.24em] text-[9.5px] sm:text-[10px]"
           data-cursor="pointer"
         >
           {currentView === "work" ? "Info" : "Work"}

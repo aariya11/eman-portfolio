@@ -18,16 +18,17 @@ export function SmoothScroll({ children }: SmoothScrollProps) {
     }
 
     const lenis = new Lenis({
-      duration: 1.25,
+      duration: 1.4,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      touchMultiplier: 1.5,
-      wheelMultiplier: 0.9,
+      touchMultiplier: 1.25,
+      wheelMultiplier: 0.88,
     });
 
     lenisRef.current = lenis;
+    (window as any).lenis = lenis;
 
     function raf(time: number) {
       lenis.raf(time);
@@ -39,6 +40,7 @@ export function SmoothScroll({ children }: SmoothScrollProps) {
     return () => {
       cancelAnimationFrame(rafId);
       lenis.destroy();
+      (window as any).lenis = null;
     };
   }, []);
 

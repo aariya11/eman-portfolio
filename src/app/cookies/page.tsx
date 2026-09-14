@@ -2,9 +2,20 @@ import React from "react";
 import Link from "next/link";
 import { Metadata } from "next";
 
+import { siteConfig } from "@/config/site";
+
 export const metadata: Metadata = {
-  title: "Cookie Policy — Eman Trades",
+  title: "Cookie Policy",
   description: "Transparent disclosure of our essential functional cookies and local storage tokens under the EU ePrivacy Directive and UK PECR.",
+  alternates: {
+    canonical: `${siteConfig.url}/cookies`,
+  },
+  openGraph: {
+    title: "Cookie Policy | Eman Trades",
+    description: "Transparent disclosure of our essential functional cookies and local storage tokens.",
+    url: `${siteConfig.url}/cookies`,
+    type: "website",
+  },
 };
 
 export default function CookiePolicyPage() {

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import { motion, useScroll } from "framer-motion";
 
 interface StevenHUDProps {
@@ -31,11 +32,7 @@ export function StevenHUD({ currentView, onToggleView }: StevenHUDProps) {
     }
   };
 
-  // Hero fade: fades quickly between scroll 0 and 180px
-  const heroOpacity = Math.max(0, 1 - scrollY / 160);
-  const heroScale = Math.max(0.95, 1 - scrollY / 1200);
-
-  // Top-left logo fades in after 120px scroll
+  // Top-left logo fades in after 110px scroll
   const topLeftOpacity = Math.min(1, Math.max(0, (scrollY - 110) / 80));
 
   return (
@@ -53,8 +50,19 @@ export function StevenHUD({ currentView, onToggleView }: StevenHUDProps) {
         </button>
       </motion.div>
 
-      {/* 2. Fixed Top-Right: "Get Mentorship" + "Info" / "Work" Button */}
-      <div className="fixed top-5 md:top-6 right-3 sm:right-4 md:right-10 z-50 flex items-center gap-2 sm:gap-3 md:gap-4">
+      {/* 2. Fixed Top-Right: Semantic Nav + "Get Mentorship" + "Info" / "Work" Button */}
+      <div className="fixed top-5 md:top-6 right-3 sm:right-4 md:right-10 z-50 flex items-center gap-3 sm:gap-4 md:gap-6">
+        {/* Desktop Semantic Directory Links for Search Crawlers & Explorers */}
+        <nav aria-label="Desktop primary navigation" className="hidden lg:flex items-center gap-4 style-meta-tag text-[9px] tracking-[0.16em] text-white/50">
+          <Link href="/about" className="hover:text-white transition-colors">About</Link>
+          <Link href="/markets" className="hover:text-white transition-colors">Markets</Link>
+          <Link href="/trades" className="hover:text-white transition-colors">Trades</Link>
+          <Link href="/performance" className="hover:text-white transition-colors">Performance</Link>
+          <Link href="/journal" className="hover:text-white transition-colors">Journal</Link>
+          <Link href="/contact" className="hover:text-white transition-colors">Contact</Link>
+        </nav>
+
+        <div className="flex items-center gap-2 sm:gap-3">
         <a
           href="https://wa.me/923156828906?text=Hello%20Eman,%20I%20am%20interested%20in%20your%201-on-1%20Trading%20Mentorship%20program."
           target="_blank"
@@ -73,6 +81,7 @@ export function StevenHUD({ currentView, onToggleView }: StevenHUDProps) {
         >
           {currentView === "work" ? "Info" : "Work"}
         </button>
+      </div>
       </div>
 
       {/* 4. Fixed Bottom-Right: Micro Specialization Details (Strictly Work view at top of desktop page only) */}

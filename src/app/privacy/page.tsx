@@ -2,9 +2,20 @@ import React from "react";
 import Link from "next/link";
 import { Metadata } from "next";
 
+import { siteConfig } from "@/config/site";
+
 export const metadata: Metadata = {
-  title: "Privacy Policy — Eman Trades",
+  title: "Privacy Policy",
   description: "Comprehensive Privacy Policy detailing our data collection, processing, and protection practices under GDPR, UK GDPR, and UAE Data Protection Law.",
+  alternates: {
+    canonical: `${siteConfig.url}/privacy`,
+  },
+  openGraph: {
+    title: "Privacy Policy | Eman Trades",
+    description: "Data collection, processing, and protection practices under GDPR and UAE Data Protection Law.",
+    url: `${siteConfig.url}/privacy`,
+    type: "website",
+  },
 };
 
 export default function PrivacyPolicyPage() {

@@ -4,6 +4,9 @@ import "./globals.css";
 import { SmoothScroll } from "@/components/common/SmoothScroll";
 import { CustomCursor } from "@/components/common/CustomCursor";
 import { CookieBanner } from "@/components/common/CookieBanner";
+import { Analytics } from "@/components/common/Analytics";
+import { siteConfig } from "@/config/site";
+import { generatePersonSchema, generateWebSiteSchema } from "@/lib/seo";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -22,25 +25,64 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://emantrades.com"),
-  title: "Eman Trades — Market Analyst & Financial Strategist",
-  description:
-    "Institutional Order Flow, Foreign Exchange, Precious Metals, US Equity Benchmarks, Macro Yield Dynamics.",
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  keywords: siteConfig.keywords,
+  authors: [{ name: siteConfig.author.name, url: siteConfig.url }],
+  creator: siteConfig.author.name,
+  publisher: siteConfig.name,
+  alternates: {
+    canonical: "./",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
-    title: "Eman Trades — Market Analyst & Financial Strategist",
-    description:
-      "Institutional Order Flow, Foreign Exchange, Precious Metals, US Equity Benchmarks, Macro Yield Dynamics.",
-    url: "https://emantrades.com",
-    siteName: "Eman Trades",
-    images: [{ url: "/images/trades/eman_trade_01.jpg", width: 1200, height: 800, alt: "Eman Trades S&P 500 E-mini Trade Execution Setup" }],
+    title: siteConfig.title,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: "Eman Trades — Market Analyst & Financial Strategist",
+      },
+      {
+        url: "/images/trades/eman_trade_01.jpg",
+        width: 1200,
+        height: 800,
+        alt: "Eman Trades S&P 500 E-mini Trade Execution Setup",
+      },
+    ],
+    locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Eman Trades — Market Analyst & Financial Strategist",
-    description:
-      "Institutional Order Flow, Foreign Exchange, Precious Metals, US Equity Benchmarks, Macro Yield Dynamics.",
-    images: ["/images/trades/eman_trade_01.jpg"],
+    title: siteConfig.title,
+    description: siteConfig.description,
+    creator: siteConfig.social.twitterHandle,
+    images: [siteConfig.ogImage],
+  },
+  verification: {
+    google: siteConfig.verification.google || undefined,
+    other: siteConfig.verification.bing
+      ? { "msvalidate.01": siteConfig.verification.bing }
+      : undefined,
   },
 };
 
@@ -55,16 +97,32 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const personSchema = generatePersonSchema();
+  const websiteSchema = generateWebSiteSchema();
+
   return (
     <html
       lang="en"
       className={`${syne.variable} ${jakarta.variable} bg-black text-white`}
     >
+      <head>
+        {/* Person JSON-LD Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
+        {/* WebSite JSON-LD Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+      </head>
       <body className="bg-black text-white antialiased overflow-x-hidden selection:bg-white selection:text-black">
         <SmoothScroll>
           <CustomCursor />
           {children}
           <CookieBanner />
+          <Analytics />
         </SmoothScroll>
       </body>
     </html>

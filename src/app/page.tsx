@@ -168,7 +168,7 @@ export default function Home() {
             className="w-full max-w-[1080px] mx-auto py-12 sm:py-16 px-4 sm:px-8 md:px-10 border-hairline-t space-y-8"
           >
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 text-white/60">
-              <div className="md:col-span-6 space-y-2">
+              <div className="md:col-span-4 space-y-2">
                 <span className="style-meta-tag text-white/80 block text-[9.5px]">
                   Eman Trades • Market Analysis &amp; Strategy
                 </span>
@@ -187,11 +187,39 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="md:col-span-6 md:text-right space-y-3">
+              {/* Primary Desk Directory */}
+              <div className="md:col-span-4 space-y-2">
+                <span className="style-meta-tag text-white/80 block text-[9.5px]">
+                  Institutional Directory
+                </span>
+                <nav aria-label="Desk navigation" className="grid grid-cols-2 gap-2 text-[11px] style-meta-tag tracking-[0.15em]">
+                  <Link href="/about" className="text-white/60 hover:text-white transition-colors">
+                    About Desk
+                  </Link>
+                  <Link href="/markets" className="text-white/60 hover:text-white transition-colors">
+                    Markets
+                  </Link>
+                  <Link href="/trades" className="text-white/60 hover:text-white transition-colors">
+                    Executions
+                  </Link>
+                  <Link href="/performance" className="text-white/60 hover:text-white transition-colors">
+                    Performance
+                  </Link>
+                  <Link href="/journal" className="text-white/60 hover:text-white transition-colors">
+                    Research Journal
+                  </Link>
+                  <Link href="/contact" className="text-white/60 hover:text-white transition-colors">
+                    Contact / Advisory
+                  </Link>
+                </nav>
+              </div>
+
+              {/* Legal & Regulatory Navigation */}
+              <div className="md:col-span-4 md:text-right space-y-2">
                 <span className="style-meta-tag text-white/80 block text-[9.5px]">
                   Legal &amp; Regulatory Disclosures
                 </span>
-                <nav aria-label="Legal navigation" className="flex flex-wrap md:justify-end gap-4 text-[11px] style-meta-tag tracking-[0.18em]">
+                <nav aria-label="Legal navigation" className="flex flex-wrap md:justify-end gap-3 text-[11px] style-meta-tag tracking-[0.16em]">
                   <Link href="/privacy" className="text-white/60 hover:text-white transition-colors">
                     Privacy Policy
                   </Link>

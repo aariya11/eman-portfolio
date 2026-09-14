@@ -2,9 +2,20 @@ import React from "react";
 import Link from "next/link";
 import { Metadata } from "next";
 
+import { siteConfig } from "@/config/site";
+
 export const metadata: Metadata = {
-  title: "Terms & Conditions & Risk Disclaimers — Eman Trades",
+  title: "Terms & Conditions & Risk Disclaimers",
   description: "Terms and conditions, statutory financial risk disclosures, intellectual property rights, and limitation of liability for Eman Trades.",
+  alternates: {
+    canonical: `${siteConfig.url}/terms`,
+  },
+  openGraph: {
+    title: "Terms & Conditions & Risk Disclaimers | Eman Trades",
+    description: "Terms and conditions, statutory financial risk disclosures, and IP rights for Eman Trades.",
+    url: `${siteConfig.url}/terms`,
+    type: "website",
+  },
 };
 
 export default function TermsPage() {

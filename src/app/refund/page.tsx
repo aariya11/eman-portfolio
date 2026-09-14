@@ -2,9 +2,20 @@ import React from "react";
 import Link from "next/link";
 import { Metadata } from "next";
 
+import { siteConfig } from "@/config/site";
+
 export const metadata: Metadata = {
-  title: "Refund & Cancellation Policy — Eman Trades",
+  title: "Refund & Cancellation Policy",
   description: "Official Refund and Cancellation Policy governing 1-on-1 trading mentorship programs and educational advisory services.",
+  alternates: {
+    canonical: `${siteConfig.url}/refund`,
+  },
+  openGraph: {
+    title: "Refund & Cancellation Policy | Eman Trades",
+    description: "Official Refund and Cancellation Policy governing 1-on-1 trading mentorship programs and educational advisory services.",
+    url: `${siteConfig.url}/refund`,
+    type: "website",
+  },
 };
 
 export default function RefundPolicyPage() {

@@ -17,14 +17,19 @@ export function SmoothScroll({ children }: SmoothScrollProps) {
       return;
     }
 
+    // On mobile touch screens, use native browser touch scrolling for fastest 120Hz zero-lag response
+    const isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+    if (isTouch && window.innerWidth < 768) {
+      return;
+    }
+
     const lenis = new Lenis({
-      duration: 1.4,
+      duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      touchMultiplier: 1.25,
-      wheelMultiplier: 0.88,
+      wheelMultiplier: 0.9,
     });
 
     lenisRef.current = lenis;

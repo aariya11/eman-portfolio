@@ -22,9 +22,9 @@ export function ArchiveHoverList({ entries, onSelectEntry }: ArchiveHoverListPro
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="w-full max-w-[1080px] mx-auto py-32 px-6 md:px-10 relative">
-      <div className="mb-10">
-        <span className="style-meta-tag block text-white/40">
+    <section className="w-full max-w-[1080px] mx-auto py-20 sm:py-28 md:py-32 px-4 sm:px-8 md:px-10 relative">
+      <div className="mb-8 sm:mb-10">
+        <span className="style-meta-tag block text-white/50 text-[9px] tracking-[0.2em]">
           Historical Ledger &amp; Selected Case Studies
         </span>
       </div>
@@ -38,18 +38,27 @@ export function ArchiveHoverList({ entries, onSelectEntry }: ArchiveHoverListPro
             return (
               <div
                 key={item.number}
+                tabIndex={0}
+                role="button"
+                aria-label={`View chart for ${item.title}`}
                 onMouseEnter={() => setHoveredIndex(idx)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 onClick={() => onSelectEntry && onSelectEntry(item)}
-                className="cursor-pointer transition-opacity duration-200 py-0.5"
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    onSelectEntry && onSelectEntry(item);
+                  }
+                }}
+                className="cursor-pointer transition-opacity duration-200 py-1 focus-visible:ring-1 focus-visible:ring-white outline-none"
                 data-cursor="explore"
               >
                 <p
-                  className={`style-copy-body transition-colors duration-200 text-[8.5px] leading-[14px] ${
-                    isHovered ? "text-white opacity-100 font-normal" : "text-white/35"
+                  className={`style-copy-body transition-colors duration-200 text-[11px] sm:text-[12px] leading-[18px] ${
+                    isHovered ? "text-white opacity-100 font-medium" : "text-white/45 hover:text-white/80"
                   }`}
                 >
-                  {item.number}. {item.title} {item.year}
+                  <span className="text-white/30 mr-1.5">{item.number}.</span> {item.title} <span className="text-white/30">({item.year})</span>
                 </p>
               </div>
             );

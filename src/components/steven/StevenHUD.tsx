@@ -54,23 +54,23 @@ export function StevenHUD({ currentView, onToggleView }: StevenHUDProps) {
       {/* 1. Fixed Top-Left: "Eman Trades" Back to Top link */}
       <motion.div
         style={{ opacity: currentView === "info" ? 1 : topLeftOpacity }}
-        className="fixed top-6 left-6 md:left-10 z-50 pointer-events-auto"
+        className="fixed top-5 md:top-6 left-4 md:left-10 z-50 pointer-events-auto"
       >
         <button
           onClick={scrollToTop}
-          className="style-meta-tag text-xs tracking-wider text-white hover:text-white/60 transition-opacity focus-visible:ring-1 focus-visible:ring-white outline-none"
+          className="style-meta-tag text-[10px] sm:text-xs tracking-wider text-white hover:text-white/60 transition-opacity focus-visible:ring-1 focus-visible:ring-white outline-none"
         >
           Eman Trades
         </button>
       </motion.div>
 
       {/* 2. Fixed Top-Right: "Get Mentorship" + "Info" / "Work" Button */}
-      <div className="fixed top-5 md:top-6 right-4 md:right-10 z-50 flex items-center gap-3 md:gap-4">
+      <div className="fixed top-5 md:top-6 right-3 sm:right-4 md:right-10 z-50 flex items-center gap-2 sm:gap-3 md:gap-4">
         <a
           href="https://wa.me/923156828906?text=Hello%20Eman,%20I%20am%20interested%20in%20your%201-on-1%20Trading%20Mentorship%20program."
           target="_blank"
           rel="noopener noreferrer"
-          className="style-meta-tag flex items-center gap-2 px-3 py-1.5 bg-white !text-black font-bold tracking-[0.2em] text-[8.5px] sm:text-[9px] hover:bg-neutral-200 transition-colors shadow-sm focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black outline-none"
+          className="style-meta-tag flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 bg-white !text-black font-bold tracking-[0.16em] sm:tracking-[0.2em] text-[8px] sm:text-[9px] hover:bg-neutral-200 transition-colors shadow-sm focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black outline-none"
           data-cursor="pointer"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" aria-hidden="true" />
@@ -79,22 +79,24 @@ export function StevenHUD({ currentView, onToggleView }: StevenHUDProps) {
 
         <button
           onClick={onToggleView}
-          className="style-meta-tag text-white hover:text-white/60 transition-colors py-1.5 px-2 tracking-[0.24em] text-[9.5px] sm:text-[10px] focus-visible:ring-1 focus-visible:ring-white outline-none"
+          className="style-meta-tag text-white hover:text-white/60 transition-colors py-1.5 px-2 tracking-[0.24em] text-[9px] sm:text-[10px] focus-visible:ring-1 focus-visible:ring-white outline-none"
           data-cursor="pointer"
         >
           {currentView === "work" ? "Info" : "Work"}
         </button>
       </div>
 
-      {/* 4. Fixed Bottom-Right: Micro Specialization Details */}
-      <div className="fixed bottom-7 right-6 md:right-10 z-40 max-w-[280px] text-right pointer-events-none hidden sm:block">
-        <p className="style-copy-body text-white/45 text-[11px] leading-[17px]">
-          Specialization: Foreign Exchange, Precious Metals, Equity Benchmarks, Macro Yield Curves &amp; Order Flow.
-        </p>
-      </div>
+      {/* 4. Fixed Bottom-Right: Micro Specialization Details (Strictly Work view at top of desktop page only) */}
+      {currentView === "work" && scrollY < 100 && (
+        <div className="fixed bottom-7 right-6 md:right-10 z-30 max-w-[260px] text-right pointer-events-none hidden xl:block transition-opacity duration-300">
+          <p className="style-copy-body text-white/40 text-[10.5px] leading-[16px]">
+            Specialization: Foreign Exchange, Precious Metals, Equity Benchmarks, Macro Yield Curves &amp; Order Flow.
+          </p>
+        </div>
+      )}
 
-      {/* 5. Fixed Bottom-Left: Minimal Audio Toggle (Market open text removed) */}
-      <div className="fixed bottom-7 left-6 md:left-10 z-40 flex items-center gap-3">
+      {/* 5. Fixed Bottom-Left: Minimal Audio Toggle */}
+      <div className="fixed bottom-6 md:bottom-7 left-4 md:left-10 z-40 flex items-center gap-3">
         <button
           onClick={handleAudioToggle}
           className="w-7 h-7 rounded-full border border-white/20 hover:border-white bg-black/70 backdrop-blur-sm flex items-center justify-center transition-all group focus-visible:ring-2 focus-visible:ring-white outline-none"

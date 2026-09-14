@@ -84,14 +84,14 @@ export default function Home() {
           {/* Private Mentorship CTA Section (High-Contrast, Visible Button) */}
           <section
             aria-label="1-on-1 Mentorship"
-            className="w-full max-w-[1080px] mx-auto py-24 px-6 md:px-10 border-hairline-t"
+            className="w-full max-w-[1080px] mx-auto py-16 sm:py-24 px-4 sm:px-8 md:px-10 border-hairline-t"
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               <div className="lg:col-span-8 space-y-4">
                 <span className="style-meta-tag block text-white/50 text-[9px] tracking-[0.22em]">
                   Private Mentorship &amp; Advisory
                 </span>
-                <h2 className="style-project-title text-white">
+                <h2 className="style-project-title text-white break-words">
                   Master institutional order flow &amp; risk engineering with 1-on-1 private guidance.
                 </h2>
                 <p className="style-copy-body max-w-xl text-white/70 text-sm leading-relaxed">
@@ -99,12 +99,12 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="lg:col-span-4 lg:text-right">
+              <div className="lg:col-span-4 lg:text-right pt-2 lg:pt-0">
                 <a
                   href="https://wa.me/923156828906?text=Hello%20Eman,%20I%20am%20interested%20in%20your%201-on-1%20Trading%20Mentorship%20program."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white !text-black font-bold text-xs tracking-[0.2em] uppercase hover:bg-neutral-200 transition-colors shadow-xl focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black outline-none"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-white !text-black font-bold text-xs tracking-[0.2em] uppercase hover:bg-neutral-200 transition-colors shadow-xl focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black outline-none"
                   data-cursor="pointer"
                   aria-label="Get Mentorship via WhatsApp at +92 315 6828906"
                 >
@@ -117,7 +117,7 @@ export default function Home() {
           </section>
 
           {/* Fully Compliant Legal & Business Details Footer */}
-          <footer className="w-full max-w-[1080px] mx-auto py-16 px-6 md:px-10 border-hairline-t space-y-8">
+          <footer className="w-full max-w-[1080px] mx-auto py-12 sm:py-16 px-4 sm:px-8 md:px-10 border-hairline-t space-y-8">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 text-white/60">
               <div className="md:col-span-6 space-y-2">
                 <span className="style-meta-tag text-white/80 block text-[9.5px]">

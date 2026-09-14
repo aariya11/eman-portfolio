@@ -53,15 +53,15 @@ export function ProjectShowcase({ project, onExpandSlide }: ProjectShowcaseProps
   };
 
   return (
-    <article className="w-full max-w-[1080px] mx-auto py-28 px-6 md:px-10 border-hairline-b">
+    <article className="w-full max-w-[1080px] mx-auto py-16 sm:py-24 md:py-28 px-4 sm:px-8 md:px-10 border-hairline-b">
       {/* Top Row: Year, Title, and Slideshow */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start mb-10">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start mb-8 sm:mb-10">
         {/* Left Column: Year & Title */}
         <div className="lg:col-span-4 space-y-3">
-          <span className="style-meta-tag block text-white/40">
+          <span className="style-meta-tag block text-white/50 text-[9px] tracking-[0.2em]">
             {project.year}
           </span>
-          <h2 className="style-project-title">
+          <h2 className="style-project-title break-words">
             {project.title}
           </h2>
         </div>
@@ -100,7 +100,9 @@ export function ProjectShowcase({ project, onExpandSlide }: ProjectShowcaseProps
                   src={project.slides[currentSlide].image}
                   alt={`${project.title} - Trade execution chart slide ${currentSlide + 1} of ${project.slides.length}`}
                   fill
-                  sizes="(max-width: 1024px) 100vw, 754px"
+                  priority={project.id === "es-liquidity-sweep-2025" && currentSlide === 0}
+                  quality={80}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 754px"
                   className="object-cover"
                 />
               </motion.div>

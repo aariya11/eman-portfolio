@@ -36,9 +36,9 @@ export function InfoView({ onBackToWork }: InfoViewProps) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -15 }}
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-      className="min-h-screen bg-black text-white pt-28 pb-32 px-6 md:px-12 max-w-[1080px] mx-auto"
+      className="min-h-screen bg-black text-white pt-24 sm:pt-28 pb-32 px-4 sm:px-8 md:px-12 max-w-[1080px] mx-auto overflow-x-hidden"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
         {/* Left Column: Editorial Narrative & Links */}
         <div className="lg:col-span-8 space-y-12">
           {/* Main Narrative Statement in Newsreader Italic */}
@@ -104,13 +104,13 @@ export function InfoView({ onBackToWork }: InfoViewProps) {
         </div>
 
         {/* Right Column: 1-on-1 Mentorship & Direct Consultation Form */}
-        <div className="lg:col-span-4 space-y-6">
+        <div className="lg:col-span-4 space-y-6 w-full max-w-full min-w-0">
           {/* Mentorship Direct WhatsApp Box */}
-          <div className="border border-white/20 p-6 bg-white/[0.03]">
+          <div className="border border-white/20 p-5 sm:p-6 bg-white/[0.03] overflow-hidden max-w-full">
             <span className="style-meta-tag block text-white/50 mb-1 text-[9px] tracking-[0.2em]">
               Private Advisory
             </span>
-            <h3 className="style-project-title text-2xl font-bold text-white mb-2">
+            <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white mb-2 break-words">
               1-on-1 Mentorship
             </h3>
             <p className="style-copy-body text-white/70 mb-5 leading-relaxed text-[12.5px]">
@@ -120,27 +120,27 @@ export function InfoView({ onBackToWork }: InfoViewProps) {
               href="https://wa.me/923156828906?text=Hello%20Eman,%20I%20am%20interested%20in%20your%201-on-1%20Trading%20Mentorship%20program."
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-3.5 px-4 bg-white !text-black font-bold tracking-[0.2em] text-[11px] hover:bg-neutral-200 transition-colors flex items-center justify-center gap-2.5 shadow-lg focus-visible:ring-2 focus-visible:ring-white outline-none"
+              className="w-full py-3.5 px-4 bg-white !text-black font-bold tracking-[0.16em] sm:tracking-[0.2em] text-[10px] sm:text-[11px] hover:bg-neutral-200 transition-colors flex items-center justify-center gap-2 shadow-lg focus-visible:ring-2 focus-visible:ring-white outline-none"
               data-cursor="pointer"
               aria-label="Inquire via WhatsApp at +92 315 6828906"
             >
-              <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" aria-hidden="true" />
+              <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse shrink-0" aria-hidden="true" />
               <span className="!text-black font-bold">INQUIRE VIA WHATSAPP</span>
             </a>
           </div>
 
-          <div className="border border-white/15 p-6 md:p-8 bg-black">
+          <div className="border border-white/15 p-5 sm:p-8 bg-black overflow-hidden max-w-full">
             <span className="style-meta-tag block text-white/50 mb-2 text-[9px] tracking-[0.2em]">
               Direct Dossier
             </span>
-            <h3 className="style-project-title text-2xl font-bold text-white mb-6">
+            <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white mb-6 break-words">
               Initiate Contact
             </h3>
 
           {isSubmitted ? (
             <div className="py-10 space-y-3 text-center">
               <CheckCircle2 className="w-6 h-6 text-white mx-auto" />
-              <p className="style-project-title text-xl text-white">
+              <p className="text-lg sm:text-xl font-bold text-white">
                 Dossier Received.
               </p>
               <p className="style-copy-body text-white/60 text-xs">
@@ -166,7 +166,7 @@ export function InfoView({ onBackToWork }: InfoViewProps) {
                   value={formState.name}
                   onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                   placeholder="e.g. Helena Vance / Sovereign Desk"
-                  className="w-full bg-black border border-white/20 p-3 text-xs text-white placeholder:text-white/30 focus:border-white transition-colors rounded-none outline-none font-sans focus-visible:ring-1 focus-visible:ring-white"
+                  className="w-full bg-black border border-white/20 p-3 text-base sm:text-xs text-white placeholder:text-white/30 focus:border-white transition-colors rounded-none outline-none font-sans focus-visible:ring-1 focus-visible:ring-white"
                 />
               </div>
 
@@ -181,7 +181,7 @@ export function InfoView({ onBackToWork }: InfoViewProps) {
                   value={formState.email}
                   onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                   placeholder="helena@apexcapital.com"
-                  className="w-full bg-black border border-white/20 p-3 text-xs text-white placeholder:text-white/30 focus:border-white transition-colors rounded-none outline-none font-sans focus-visible:ring-1 focus-visible:ring-white"
+                  className="w-full bg-black border border-white/20 p-3 text-base sm:text-xs text-white placeholder:text-white/30 focus:border-white transition-colors rounded-none outline-none font-sans focus-visible:ring-1 focus-visible:ring-white"
                 />
               </div>
 
@@ -193,7 +193,7 @@ export function InfoView({ onBackToWork }: InfoViewProps) {
                   id="contact-subject"
                   value={formState.subject}
                   onChange={(e) => setFormState({ ...formState, subject: e.target.value })}
-                  className="w-full bg-black border border-white/20 p-3 text-xs text-white focus:border-white transition-colors rounded-none outline-none font-sans cursor-pointer focus-visible:ring-1 focus-visible:ring-white"
+                  className="w-full bg-black border border-white/20 p-3 text-base sm:text-xs text-white focus:border-white transition-colors rounded-none outline-none font-sans cursor-pointer focus-visible:ring-1 focus-visible:ring-white"
                 >
                   {socialsData.contact.inquiryTypes.map((type) => (
                     <option key={type} value={type} className="bg-black text-white">
@@ -214,7 +214,7 @@ export function InfoView({ onBackToWork }: InfoViewProps) {
                   value={formState.message}
                   onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                   placeholder="Outline allocation terms or consultation parameters..."
-                  className="w-full bg-black border border-white/20 p-3 text-xs text-white placeholder:text-white/30 focus:border-white transition-colors rounded-none outline-none font-sans resize-none focus-visible:ring-1 focus-visible:ring-white"
+                  className="w-full bg-black border border-white/20 p-3 text-base sm:text-xs text-white placeholder:text-white/30 focus:border-white transition-colors rounded-none outline-none font-sans resize-none focus-visible:ring-1 focus-visible:ring-white"
                 />
               </div>
 

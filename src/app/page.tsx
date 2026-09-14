@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { StevenHUD } from "@/components/steven/StevenHUD";
 import { ProjectShowcase } from "@/components/steven/ProjectShowcase";
 import { ArchiveHoverList } from "@/components/steven/ArchiveHoverList";
@@ -25,7 +26,7 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen bg-black text-white selection:bg-white selection:text-black">
-      {/* Steven Mengin Fixed HUD (Header, Centered Hero Fade, Info/Work Toggle, Corner Details) */}
+      {/* Steven Mengin Fixed HUD (Header, Back to Top, Info/Work Toggle, Corner Details) */}
       <StevenHUD
         currentView={currentView}
         onToggleView={handleToggleView}
@@ -33,13 +34,33 @@ export default function Home() {
 
       {/* Main View Transition */}
       {currentView === "work" ? (
-        <main className="relative z-20">
-          {/* Hero Opening Spacer (Allows the centered fixed hero to command the viewport upon entry) */}
-          <div className="h-[80vh] min-h-[500px] w-full flex items-end justify-center pb-12 pointer-events-none">
-            <span className="style-meta-tag text-white/30 text-[8.5px] tracking-[0.25em] animate-pulse">
-              ↓ Scroll to inspect projects
-            </span>
-          </div>
+        <main className="relative z-20 pt-20">
+          {/* Hero Section (Non-overlapping, architectural presentation) */}
+          <section
+            aria-label="Hero"
+            className="min-h-[75vh] flex flex-col items-center justify-center text-center px-6 py-20 relative max-w-4xl mx-auto"
+          >
+            <div className="space-y-6">
+              <span className="style-meta-tag text-white/50 text-[10px] tracking-[0.3em] block">
+                Independent Trading Desk &amp; Strategy
+              </span>
+              <h1 className="style-hero-name text-white">
+                Eman Trades
+              </h1>
+              <p className="style-meta-tag text-white/70 tracking-[0.25em] text-xs sm:text-sm">
+                Market Analyst &amp; Financial Strategist
+              </p>
+              <p className="style-copy-body text-white/60 max-w-xl mx-auto pt-2 text-sm sm:text-base leading-relaxed">
+                Institutional Order Flow, Liquidity Architecture &amp; Probabilistic Risk Engineering across Global Futures and Foreign Exchange.
+              </p>
+            </div>
+
+            <div className="pt-16 sm:pt-20">
+              <span className="style-meta-tag text-white/35 text-[9px] tracking-[0.25em] animate-pulse">
+                ↓ Scroll to examine documented executions
+              </span>
+            </div>
+          </section>
 
           {/* Project Showcases (Dual-column: Left year/title/narrative, Right large interactive slideshow) */}
           <section aria-label="Selected Projects">
@@ -60,17 +81,20 @@ export default function Home() {
             />
           </section>
 
-          {/* Private Mentorship CTA Section */}
-          <section aria-label="1-on-1 Mentorship" className="w-full max-w-[1080px] mx-auto py-24 px-6 md:px-10 border-hairline-t">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+          {/* Private Mentorship CTA Section (High-Contrast, Visible Button) */}
+          <section
+            aria-label="1-on-1 Mentorship"
+            className="w-full max-w-[1080px] mx-auto py-24 px-6 md:px-10 border-hairline-t"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               <div className="lg:col-span-8 space-y-4">
-                <span className="style-meta-tag block text-white/40">
+                <span className="style-meta-tag block text-white/50 text-[9px] tracking-[0.22em]">
                   Private Mentorship &amp; Advisory
                 </span>
-                <h3 className="font-editorial italic text-3xl md:text-4xl font-light text-white leading-tight">
+                <h2 className="style-project-title text-white">
                   Master institutional order flow &amp; risk engineering with 1-on-1 private guidance.
-                </h3>
-                <p className="style-copy-body max-w-xl text-white/60">
+                </h2>
+                <p className="style-copy-body max-w-xl text-white/70 text-sm leading-relaxed">
                   Direct access to live trade preparation, session playbooks, risk mitigation protocols, and psychological discipline frameworks. Limited to committed operators. Direct desk WhatsApp: +92 315 6828906.
                 </p>
               </div>
@@ -80,25 +104,71 @@ export default function Home() {
                   href="https://wa.me/923156828906?text=Hello%20Eman,%20I%20am%20interested%20in%20your%201-on-1%20Trading%20Mentorship%20program."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 px-6 py-3.5 bg-white text-black style-meta-tag text-[9px] font-bold tracking-[0.24em] hover:bg-white/90 transition-all group"
+                  className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white !text-black font-bold text-xs tracking-[0.2em] uppercase hover:bg-neutral-200 transition-colors shadow-xl focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black outline-none"
                   data-cursor="pointer"
+                  aria-label="Get Mentorship via WhatsApp at +92 315 6828906"
                 >
-                  <span className="w-2 h-2 rounded-full bg-emerald-600 group-hover:scale-125 transition-transform" />
-                  <span>GET MENTORSHIP</span>
-                  <span>→</span>
+                  <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse shrink-0" aria-hidden="true" />
+                  <span className="!text-black font-bold">GET MENTORSHIP</span>
+                  <span className="!text-black font-bold" aria-hidden="true">→</span>
                 </a>
               </div>
             </div>
           </section>
 
-          {/* Minimalist Steven Mengin Style Footer */}
-          <footer className="w-full max-w-[1080px] mx-auto py-16 px-6 md:px-10 border-hairline-t flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-white/40">
-            <p className="style-meta-tag text-[7.5px]">
-              © {new Date().getFullYear()} EMAN TRADES. ALL RIGHTS RESERVED.
-            </p>
-            <p className="style-meta-tag text-[7.5px]">
-              MARKETS. DISCIPLINE. PRECISION.
-            </p>
+          {/* Fully Compliant Legal & Business Details Footer */}
+          <footer className="w-full max-w-[1080px] mx-auto py-16 px-6 md:px-10 border-hairline-t space-y-8">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 text-white/60">
+              <div className="md:col-span-6 space-y-2">
+                <span className="style-meta-tag text-white/80 block text-[9.5px]">
+                  Eman Trades • Market Analysis &amp; Strategy
+                </span>
+                <p className="style-copy-body text-white/50 text-[12px] leading-relaxed">
+                  Trading desk operations based in London, UK and Dubai, UAE. Dedicated to institutional auction theory, macro yield mapping, and capital preservation.
+                </p>
+                <p className="style-copy-body text-white/50 text-[12px]">
+                  Direct Inquiries:{" "}
+                  <a href="mailto:desk@emantrades.com" className="text-white hover:underline">
+                    desk@emantrades.com
+                  </a>{" "}
+                  • WhatsApp:{" "}
+                  <a href="https://wa.me/923156828906" className="text-white hover:underline">
+                    +92 315 6828906
+                  </a>
+                </p>
+              </div>
+
+              <div className="md:col-span-6 md:text-right space-y-3">
+                <span className="style-meta-tag text-white/80 block text-[9.5px]">
+                  Legal &amp; Regulatory Disclosures
+                </span>
+                <nav aria-label="Legal navigation" className="flex flex-wrap md:justify-end gap-4 text-[11px] style-meta-tag tracking-[0.18em]">
+                  <Link href="/privacy" className="text-white/60 hover:text-white transition-colors">
+                    Privacy Policy
+                  </Link>
+                  <Link href="/terms" className="text-white/60 hover:text-white transition-colors">
+                    Terms &amp; Conditions
+                  </Link>
+                  <Link href="/cookies" className="text-white/60 hover:text-white transition-colors">
+                    Cookie Policy
+                  </Link>
+                  <Link href="/refund" className="text-white/60 hover:text-white transition-colors">
+                    Refund Policy
+                  </Link>
+                </nav>
+              </div>
+            </div>
+
+            {/* Mandatory Regulatory Risk Warning */}
+            <div className="pt-6 border-hairline-t">
+              <p className="style-copy-body text-white/40 text-[10.5px] leading-[16px]">
+                <strong>Statutory Risk Warning:</strong> Trading foreign exchange, equity index futures, and commodities on margin involves substantial risk of capital loss and is not suitable for all investors. High leverage can work against you as well as for you. Before deciding to trade financial markets, carefully consider your investment objectives, level of experience, and risk appetite. Past performance is not indicative of future results. All content provided on this website is for educational and analytical purposes only and does not constitute investment advice, financial planning, or an offer to solicit capital.
+              </p>
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 pt-4 style-meta-tag text-[8.5px] text-white/40">
+                <span>© {new Date().getFullYear()} EMAN TRADES. ALL RIGHTS RESERVED.</span>
+                <span>DISCIPLINE • SYSTEMATICS • OBJECTIVITY</span>
+              </div>
+            </div>
           </footer>
         </main>
       ) : (

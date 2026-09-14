@@ -106,48 +106,49 @@ export function InfoView({ onBackToWork }: InfoViewProps) {
         {/* Right Column: 1-on-1 Mentorship & Direct Consultation Form */}
         <div className="lg:col-span-4 space-y-6">
           {/* Mentorship Direct WhatsApp Box */}
-          <div className="border border-white/20 p-6 bg-white/[0.02]">
-            <span className="style-meta-tag block text-white/40 mb-1">
+          <div className="border border-white/20 p-6 bg-white/[0.03]">
+            <span className="style-meta-tag block text-white/50 mb-1 text-[9px] tracking-[0.2em]">
               Private Advisory
             </span>
-            <h3 className="font-editorial italic text-2xl font-light text-white mb-2">
+            <h3 className="style-project-title text-2xl font-bold text-white mb-2">
               1-on-1 Mentorship
             </h3>
-            <p className="style-copy-body text-white/70 mb-5 leading-[16px]">
-              Direct one-on-one mentorship covering institutional order delivery, liquidity engineering, and mathematical risk management. Connect directly via WhatsApp.
+            <p className="style-copy-body text-white/70 mb-5 leading-relaxed text-[12.5px]">
+              Direct one-on-one mentorship covering institutional order delivery, liquidity engineering, and mathematical risk management. Direct desk WhatsApp: +92 315 6828906.
             </p>
             <a
               href="https://wa.me/923156828906?text=Hello%20Eman,%20I%20am%20interested%20in%20your%201-on-1%20Trading%20Mentorship%20program."
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-3 bg-white text-black style-meta-tag text-[8.5px] font-bold tracking-[0.24em] hover:bg-white/90 transition-colors flex items-center justify-center gap-2"
+              className="w-full py-3.5 px-4 bg-white !text-black font-bold tracking-[0.2em] text-[11px] hover:bg-neutral-200 transition-colors flex items-center justify-center gap-2.5 shadow-lg focus-visible:ring-2 focus-visible:ring-white outline-none"
               data-cursor="pointer"
+              aria-label="Inquire via WhatsApp at +92 315 6828906"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
-              <span>INQUIRE VIA WHATSAPP (+92 315 6828906)</span>
+              <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" aria-hidden="true" />
+              <span className="!text-black font-bold">INQUIRE VIA WHATSAPP</span>
             </a>
           </div>
 
-          <div className="border border-white/10 p-6 md:p-8 bg-black">
-            <span className="style-meta-tag block text-white/40 mb-2">
+          <div className="border border-white/15 p-6 md:p-8 bg-black">
+            <span className="style-meta-tag block text-white/50 mb-2 text-[9px] tracking-[0.2em]">
               Direct Dossier
             </span>
-            <h3 className="font-editorial italic text-2xl font-light text-white mb-6">
+            <h3 className="style-project-title text-2xl font-bold text-white mb-6">
               Initiate Contact
             </h3>
 
           {isSubmitted ? (
             <div className="py-10 space-y-3 text-center">
-              <CheckCircle2 className="w-5 h-5 text-white/80 mx-auto" />
-              <p className="font-editorial italic text-xl text-white">
+              <CheckCircle2 className="w-6 h-6 text-white mx-auto" />
+              <p className="style-project-title text-xl text-white">
                 Dossier Received.
               </p>
-              <p className="style-copy-body text-white/50 text-[8.5px]">
-                Communications are reviewed within 24–48 business hours.
+              <p className="style-copy-body text-white/60 text-xs">
+                Inquiries are reviewed within 24–48 business hours.
               </p>
               <button
                 onClick={() => setIsSubmitted(false)}
-                className="style-meta-tag text-white underline pt-4 block mx-auto tracking-[0.2em]"
+                className="style-meta-tag text-white underline pt-4 block mx-auto tracking-[0.2em] text-[10px]"
               >
                 Send another message
               </button>
@@ -155,41 +156,44 @@ export function InfoView({ onBackToWork }: InfoViewProps) {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="style-meta-tag block text-white/40 mb-1.5 text-[7.5px]">
-                  Name / Entity
+                <label htmlFor="contact-name" className="style-meta-tag block text-white/50 mb-1.5 text-[8.5px]">
+                  Name / Entity *
                 </label>
                 <input
+                  id="contact-name"
                   type="text"
                   required
                   value={formState.name}
                   onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                   placeholder="e.g. Helena Vance / Sovereign Desk"
-                  className="w-full bg-black border border-white/15 p-2.5 text-xs text-white placeholder:text-white/20 focus:border-white/60 transition-colors rounded-none outline-none font-sans"
+                  className="w-full bg-black border border-white/20 p-3 text-xs text-white placeholder:text-white/30 focus:border-white transition-colors rounded-none outline-none font-sans focus-visible:ring-1 focus-visible:ring-white"
                 />
               </div>
 
               <div>
-                <label className="style-meta-tag block text-white/40 mb-1.5 text-[7.5px]">
-                  Email Address
+                <label htmlFor="contact-email" className="style-meta-tag block text-white/50 mb-1.5 text-[8.5px]">
+                  Email Address *
                 </label>
                 <input
+                  id="contact-email"
                   type="email"
                   required
                   value={formState.email}
                   onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                   placeholder="helena@apexcapital.com"
-                  className="w-full bg-black border border-white/15 p-2.5 text-xs text-white placeholder:text-white/20 focus:border-white/60 transition-colors rounded-none outline-none font-sans"
+                  className="w-full bg-black border border-white/20 p-3 text-xs text-white placeholder:text-white/30 focus:border-white transition-colors rounded-none outline-none font-sans focus-visible:ring-1 focus-visible:ring-white"
                 />
               </div>
 
               <div>
-                <label className="style-meta-tag block text-white/40 mb-1.5 text-[7.5px]">
+                <label htmlFor="contact-subject" className="style-meta-tag block text-white/50 mb-1.5 text-[8.5px]">
                   Inquiry Nature
                 </label>
                 <select
+                  id="contact-subject"
                   value={formState.subject}
                   onChange={(e) => setFormState({ ...formState, subject: e.target.value })}
-                  className="w-full bg-black border border-white/15 p-2.5 text-xs text-white focus:border-white/60 transition-colors rounded-none outline-none font-sans cursor-pointer"
+                  className="w-full bg-black border border-white/20 p-3 text-xs text-white focus:border-white transition-colors rounded-none outline-none font-sans cursor-pointer focus-visible:ring-1 focus-visible:ring-white"
                 >
                   {socialsData.contact.inquiryTypes.map((type) => (
                     <option key={type} value={type} className="bg-black text-white">
@@ -200,38 +204,66 @@ export function InfoView({ onBackToWork }: InfoViewProps) {
               </div>
 
               <div>
-                <label className="style-meta-tag block text-white/40 mb-1.5 text-[7.5px]">
-                  Transmission Brief
+                <label htmlFor="contact-message" className="style-meta-tag block text-white/50 mb-1.5 text-[8.5px]">
+                  Transmission Brief *
                 </label>
                 <textarea
+                  id="contact-message"
                   required
                   rows={4}
                   value={formState.message}
                   onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                   placeholder="Outline allocation terms or consultation parameters..."
-                  className="w-full bg-black border border-white/15 p-2.5 text-xs text-white placeholder:text-white/20 focus:border-white/60 transition-colors rounded-none outline-none font-sans resize-none"
+                  className="w-full bg-black border border-white/20 p-3 text-xs text-white placeholder:text-white/30 focus:border-white transition-colors rounded-none outline-none font-sans resize-none focus-visible:ring-1 focus-visible:ring-white"
                 />
+              </div>
+
+              {/* GDPR / Privacy Consent Checkbox */}
+              <div className="flex items-start gap-2.5 pt-2">
+                <input
+                  type="checkbox"
+                  id="privacy-consent"
+                  required
+                  className="mt-1 w-4 h-4 rounded-none border border-white/30 bg-black checked:bg-white accent-white focus-visible:ring-2 focus-visible:ring-white outline-none cursor-pointer shrink-0"
+                />
+                <label htmlFor="privacy-consent" className="style-copy-body text-[11px] text-white/70 leading-[16px] cursor-pointer select-none">
+                  I consent to the collection and processing of my submitted details in accordance with the{" "}
+                  <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-white underline hover:text-white/80">
+                    Privacy Policy
+                  </a>{" "}
+                  for responding to this inquiry.
+                </label>
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-3 bg-white text-black style-meta-tag text-[8.5px] font-bold tracking-[0.24em] hover:bg-white/90 transition-colors flex items-center justify-center gap-2 rounded-none"
+                className="w-full py-3.5 bg-white !text-black font-bold style-meta-tag text-[9.5px] tracking-[0.24em] hover:bg-neutral-200 transition-colors flex items-center justify-center gap-2 rounded-none cursor-pointer focus-visible:ring-2 focus-visible:ring-white outline-none"
                 data-cursor="pointer"
               >
-                <span>{isSubmitting ? "TRANSMITTING..." : "TRANSMIT DOSSIER"}</span>
-                <ArrowRight className="w-3 h-3" />
+                <span className="!text-black font-bold">{isSubmitting ? "TRANSMITTING..." : "TRANSMIT DOSSIER"}</span>
+                <ArrowRight className="w-3.5 h-3.5 text-black" aria-hidden="true" />
               </button>
             </form>
           )}
 
-            <div className="pt-6 mt-6 border-hairline-t">
+            <div className="pt-6 mt-6 border-hairline-t space-y-4">
               <button
                 onClick={onBackToWork}
-                className="style-meta-tag text-white/35 hover:text-white transition-colors text-[7.5px]"
+                className="style-meta-tag text-white/50 hover:text-white transition-colors text-[8.5px] block focus-visible:ring-1 focus-visible:ring-white outline-none"
               >
                 ← Return to Project Showcase
               </button>
+
+              <div className="flex flex-wrap gap-3 pt-2 text-[8px] style-meta-tag text-white/40">
+                <a href="/privacy" className="hover:text-white">Privacy Policy</a>
+                <span>•</span>
+                <a href="/terms" className="hover:text-white">Terms</a>
+                <span>•</span>
+                <a href="/cookies" className="hover:text-white">Cookies</a>
+                <span>•</span>
+                <a href="/refund" className="hover:text-white">Refunds</a>
+              </div>
             </div>
           </div>
         </div>

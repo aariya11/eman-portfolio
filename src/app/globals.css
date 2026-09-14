@@ -42,66 +42,71 @@ html.lenis body {
   overflow: hidden;
 }
 
-/* Custom Editorial Typography Classes */
+/* Custom Editorial Typography Classes (Human Swiss Architectural System) */
 .style-hero-name {
-  font-family: var(--font-editorial), Newsreader, Georgia, serif;
-  font-style: italic;
-  font-size: clamp(52px, 6.8vw, 84px);
-  line-height: 0.92;
-  font-weight: 300;
+  font-family: var(--font-syne), var(--font-sans), sans-serif;
+  font-style: normal;
+  font-size: clamp(48px, 6.5vw, 84px);
+  line-height: 1.12;
+  font-weight: 700;
   letter-spacing: -0.025em;
   color: #ffffff;
 }
 
 .style-project-title {
-  font-family: var(--font-editorial), Newsreader, Georgia, serif;
-  font-style: italic;
-  font-size: clamp(38px, 4.5vw, 56px);
-  line-height: 0.95;
-  font-weight: 300;
+  font-family: var(--font-syne), var(--font-sans), sans-serif;
+  font-style: normal;
+  font-size: clamp(28px, 3.8vw, 48px);
+  line-height: 1.2;
+  font-weight: 600;
   letter-spacing: -0.015em;
   color: #ffffff;
 }
 
 .style-narrative-lead {
-  font-family: var(--font-editorial), Newsreader, Georgia, serif;
-  font-style: italic;
-  font-size: clamp(22px, 2.3vw, 29px);
-  line-height: 1.36;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-style: normal;
+  font-size: clamp(17px, 1.8vw, 22px);
+  line-height: 1.55;
   font-weight: 300;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .style-meta-tag {
   font-family: var(--font-syne), sans-serif;
-  font-size: 8.5px;
-  line-height: 12px;
+  font-size: 9.5px;
+  line-height: 14px;
   text-transform: uppercase;
-  letter-spacing: 0.22em;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.2em;
+  font-weight: 600;
 }
 
 .style-copy-body {
   font-family: var(--font-sans), system-ui, sans-serif;
-  font-size: 9px;
-  line-height: 14.5px;
+  font-size: 13.5px;
+  line-height: 22px;
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.68);
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .style-press-link {
-  font-family: var(--font-editorial), Newsreader, Georgia, serif;
-  font-style: italic;
-  font-size: 13.5px;
-  line-height: 19px;
-  color: rgba(255, 255, 255, 0.45);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 20px;
+  color: rgba(255, 255, 255, 0.65);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .style-press-link:hover {
   color: #ffffff;
   transform: translateX(3px);
+}
+
+/* Accessible focus ring for keyboard navigation */
+:focus-visible {
+  outline: 2px solid #ffffff !important;
+  outline-offset: 3px !important;
 }
 
 /* Subtle hairline borders */

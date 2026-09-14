@@ -33,7 +33,7 @@ export const journalData = {
       readTime: "6 MIN READ",
       excerpt:
         "Large market participants cannot simply enter positions with market orders without severe slippage. They require counterparty volume — precisely where retail traders park their stop-losses.",
-      image: "/images/journal_market_structure.jpg",
+      image: "/images/trades/eman_trade_01.jpg",
       content: {
         lead: "In liquid financial markets, price does not move randomly; it travels from one concentration of liquidity to the next. Understanding this continuous auction mechanism separates the reactive participant from the deliberate operator.",
         sections: [
@@ -71,7 +71,7 @@ export const journalData = {
       readTime: "8 MIN READ",
       excerpt:
         "A trader with a 40% win rate can significantly outperform one with an 80% win rate. The fatal trap of retail trading is mistaking predictive accuracy for financial edge.",
-      image: "/images/cinematic_architecture.jpg",
+      image: "/images/trades/eman_trade_02.jpg",
       content: {
         lead: "Trading is not an exercise in prophetic foresight. It is a game of fractional expectancy over repeated probabilistic iterations. Survival precedes profitability.",
         sections: [
@@ -107,7 +107,7 @@ export const journalData = {
       readTime: "5 MIN READ",
       excerpt:
         "The market is an emotional mirror. Every unresolved fear, greed, or impatience within the trader will be extracted and weaponized against their account balance.",
-      image: "/images/eman_about.jpg",
+      image: "/images/trades/eman_trade_03.jpg",
       content: {
         lead: "The market does not know your name, does not care about your financial goals, and has zero malice towards you. The feeling of being targeted by price action is entirely a projection of unchecked ego.",
         sections: [
@@ -138,7 +138,7 @@ export const journalData = {
       readTime: "7 MIN READ",
       excerpt:
         "Technical charts provide the timing; macro liquidity dictates the trajectory. How understanding bond yields and overnight index swaps transforms technical precision.",
-      image: "/images/eman_hero.jpg",
+      image: "/images/trades/eman_trade_04.jpg",
       content: {
         lead: "Currencies are the balance sheets of sovereign nations. Attempting to trade foreign exchange solely off isolated chart patterns without understanding rate differentials is like navigating blindfolded.",
         sections: [

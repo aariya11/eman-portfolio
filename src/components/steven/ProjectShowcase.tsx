@@ -69,9 +69,21 @@ export function ProjectShowcase({ project, onExpandSlide }: ProjectShowcaseProps
         {/* Right Column: Interactive Slideshow (754px equivalent) */}
         <div className="lg:col-span-8 relative">
           <div
+            tabIndex={0}
+            role="region"
+            aria-label={`${project.title} trading chart slideshow. Use left and right arrow keys to navigate slides.`}
             onClick={handleSlideClick}
             onMouseMove={handleMouseMove}
-            className="relative w-full aspect-[16/9] bg-black overflow-hidden group cursor-pointer border border-white/10 select-none"
+            onKeyDown={(e) => {
+              if (e.key === "ArrowRight" || e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                nextSlide();
+              } else if (e.key === "ArrowLeft") {
+                e.preventDefault();
+                prevSlide();
+              }
+            }}
+            className="relative w-full aspect-[16/9] bg-black overflow-hidden group cursor-pointer border border-white/15 select-none focus-visible:ring-2 focus-visible:ring-white outline-none"
             data-cursor="pointer"
           >
             {/* Slide Images with crossfade */}
@@ -81,12 +93,12 @@ export function ProjectShowcase({ project, onExpandSlide }: ProjectShowcaseProps
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
+                transition={{ duration: 0.35, ease: "easeInOut" }}
                 className="absolute inset-0 w-full h-full"
               >
                 <Image
                   src={project.slides[currentSlide].image}
-                  alt={`${project.title} slide ${currentSlide + 1}`}
+                  alt={`${project.title} - Trade execution chart slide ${currentSlide + 1} of ${project.slides.length}`}
                   fill
                   sizes="(max-width: 1024px) 100vw, 754px"
                   className="object-cover"
@@ -95,21 +107,23 @@ export function ProjectShowcase({ project, onExpandSlide }: ProjectShowcaseProps
             </AnimatePresence>
 
             {/* Slide Counter Overlay */}
-            <div className="absolute bottom-3 right-4 z-20 style-meta-tag text-[8px] text-white/80 bg-black/65 px-2 py-0.5 tracking-[0.2em] pointer-events-none">
+            <div className="absolute bottom-3 right-4 z-20 style-meta-tag text-[9px] text-white/90 bg-black/75 px-2.5 py-1 tracking-[0.2em] pointer-events-none">
               {currentSlide + 1} / {project.slides.length}
             </div>
 
             {/* Expand Fullscreen Button */}
             {onExpandSlide && (
               <button
+                type="button"
                 onClick={(e) => {
                   e.stopPropagation();
                   onExpandSlide(project.slides[currentSlide].image, project.title);
                 }}
-                className="absolute top-3 right-3 z-20 p-1.5 bg-black/60 hover:bg-black text-white/60 hover:text-white transition-colors"
+                className="absolute top-3 right-3 z-20 p-2 bg-black/70 hover:bg-black text-white/70 hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-white outline-none"
                 title="Expand fullscreen view"
+                aria-label="Expand fullscreen view"
               >
-                <Maximize2 className="w-3.5 h-3.5" />
+                <Maximize2 className="w-4 h-4" />
               </button>
             )}
 

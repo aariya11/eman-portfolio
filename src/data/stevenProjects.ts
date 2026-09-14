@@ -23,8 +23,7 @@ export const stevenProjects: ShowcaseProject[] = [
     slides: [
       { image: "/images/trades/eman_trade_01.jpg" },
       { image: "/images/trades/eman_trade_03.jpg" },
-      { image: "/images/journal_market_structure.jpg" },
-      { image: "/images/eman_hero.jpg" },
+      { image: "/images/trades/eman_trade_05.jpg" },
     ],
   },
   {
@@ -47,8 +46,7 @@ export const stevenProjects: ShowcaseProject[] = [
     slides: [
       { image: "/images/trades/eman_trade_02.jpg" },
       { image: "/images/trades/eman_trade_05.jpg" },
-      { image: "/images/cinematic_architecture.jpg" },
-      { image: "/images/eman_about.jpg" },
+      { image: "/images/trades/eman_trade_01.jpg" },
     ],
   },
   {
@@ -71,7 +69,7 @@ export const stevenProjects: ShowcaseProject[] = [
     slides: [
       { image: "/images/trades/eman_trade_03.jpg" },
       { image: "/images/trades/eman_trade_04.jpg" },
-      { image: "/images/eman_hero.jpg" },
+      { image: "/images/trades/eman_trade_02.jpg" },
     ],
   },
   {
@@ -94,7 +92,7 @@ export const stevenProjects: ShowcaseProject[] = [
     slides: [
       { image: "/images/trades/eman_trade_04.jpg" },
       { image: "/images/trades/eman_trade_01.jpg" },
-      { image: "/images/journal_market_structure.jpg" },
+      { image: "/images/trades/eman_trade_05.jpg" },
     ],
   },
   {
@@ -115,9 +113,8 @@ export const stevenProjects: ShowcaseProject[] = [
     ],
     slides: [
       { image: "/images/trades/eman_trade_05.jpg" },
-      { image: "/images/eman_hero.jpg" },
-      { image: "/images/eman_about.jpg" },
-      { image: "/images/journal_market_structure.jpg" },
+      { image: "/images/trades/eman_trade_02.jpg" },
+      { image: "/images/trades/eman_trade_03.jpg" },
     ],
   },
 ];
@@ -160,24 +157,24 @@ export const stevenArchiveEntries: ArchiveEntry[] = [
   },
   {
     number: "06",
-    title: "XAU/USD: London Liquidity Sweep into 4H Order Block",
+    title: "ES Futures: Institutional Liquidity Absorption Pattern",
     year: "2025",
-    category: "PRECIOUS METALS",
-    image: "/images/journal_market_structure.jpg",
+    category: "MARKET STRUCTURE",
+    image: "/images/trades/eman_trade_01.jpg",
   },
   {
     number: "07",
     title: "Process Over Prediction: Doctrine of Systematic Preparation",
     year: "2025",
     category: "PHILOSOPHY",
-    image: "/images/eman_about.jpg",
+    image: "/images/trades/eman_trade_02.jpg",
   },
   {
     number: "08",
-    title: "EUR/USD: Bearish Premium Liquidity Run into Prior Week High",
+    title: "ES Futures: Intraday Range Displacement & Mean Reversion",
     year: "2024",
-    category: "FOREIGN EXCHANGE",
-    image: "/images/cinematic_architecture.jpg",
+    category: "EQUITY INDEX",
+    image: "/images/trades/eman_trade_03.jpg",
   },
   {
     number: "09",
@@ -191,7 +188,7 @@ export const stevenArchiveEntries: ArchiveEntry[] = [
     title: "Patience Creates Opportunity: The Discipline of Inaction",
     year: "2024",
     category: "PSYCHOLOGY",
-    image: "/images/eman_hero.jpg",
+    image: "/images/trades/eman_trade_04.jpg",
   },
   {
     number: "11",
@@ -205,6 +202,6 @@ export const stevenArchiveEntries: ArchiveEntry[] = [
     title: "Statistical Expectancy & Fractional Ruin Models",
     year: "2023",
     category: "QUANTITATIVE",
-    image: "/images/trades/eman_trade_04.jpg",
+    image: "/images/trades/eman_trade_05.jpg",
   },
 ];

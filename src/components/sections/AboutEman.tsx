@@ -40,7 +40,7 @@ export function AboutEman() {
               data-cursor="view"
             >
               <Image
-                src="/images/eman_about.jpg"
+                src="/images/trades/eman_trade_02.jpg"
                 alt="Eman — Market Analyst and Financial Strategist"
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 45vw, 450px"

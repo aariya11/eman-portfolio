@@ -121,7 +121,7 @@ export function Hero() {
             {/* Portrait Image with slow scale */}
             <motion.div style={{ scale: imageScale }} className="w-full h-full relative">
               <Image
-                src="/images/eman_hero.jpg"
+                src="/images/trades/eman_trade_01.jpg"
                 alt="Eman Trades — Professional Institutional Trader and Market Analyst"
                 fill
                 priority

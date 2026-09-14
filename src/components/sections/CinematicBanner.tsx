@@ -26,8 +26,8 @@ export function CinematicBanner() {
         className="absolute inset-0 w-full h-[130%] -top-[15%] pointer-events-none"
       >
         <Image
-          src="/images/cinematic_architecture.jpg"
-          alt="Architectural financial district at twilight"
+          src="/images/trades/eman_trade_03.jpg"
+          alt="Eman Trades Market Structure Analysis Setup"
           fill
           priority={false}
           sizes="100vw"

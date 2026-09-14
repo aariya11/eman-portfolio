@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { StevenHUD } from "@/components/steven/StevenHUD";
 import { ProjectShowcase } from "@/components/steven/ProjectShowcase";
+import { QuotesSection } from "@/components/steven/QuotesSection";
 import { ArchiveHoverList } from "@/components/steven/ArchiveHoverList";
 import { InfoView } from "@/components/steven/InfoView";
 import { ImageModal } from "@/components/steven/ImageModal";
@@ -72,6 +73,9 @@ export default function Home() {
               />
             ))}
           </section>
+
+          {/* Inspiring Trading Psychology & Motivating Quotes */}
+          <QuotesSection />
 
           {/* Numbered Historical Ledger & Selected Case Studies with Floating Hover Image Previews */}
           <section aria-label="Archive & Selected Case Studies">

@@ -73,6 +73,19 @@ export function InfoView({ onBackToWork }: InfoViewProps) {
             ))}
           </div>
 
+          {/* Foundational Desk Axiom */}
+          <div className="pt-8 border-hairline-t space-y-3">
+            <span className="style-meta-tag block text-white/40 text-[9px] tracking-[0.2em] uppercase">
+              Operational Axiom • Capital Defense
+            </span>
+            <blockquote className="font-editorial italic text-lg sm:text-xl text-white/90 leading-relaxed">
+              &ldquo;The most important rule of trading is to play great defense, not great offense. Every single day, I assume every position I have is wrong.&rdquo;
+            </blockquote>
+            <p className="style-meta-tag text-[10px] text-white/50 tracking-wider">
+              — Paul Tudor Jones <span className="text-white/30">•</span> Macro Principle Honored at Eman Trades Desk
+            </p>
+          </div>
+
           {/* Audited Performance Records */}
           <div className="pt-10 border-hairline-t space-y-6">
             <span className="style-meta-tag block text-white/40">

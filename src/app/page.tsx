@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { StevenHUD } from "@/components/steven/StevenHUD";
 import { ProjectShowcase } from "@/components/steven/ProjectShowcase";
 import { QuotesSection } from "@/components/steven/QuotesSection";
@@ -27,7 +28,7 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen bg-black text-white selection:bg-white selection:text-black">
-      {/* Steven Mengin Fixed HUD (Header, Back to Top, Info/Work Toggle, Corner Details) */}
+      {/* Steven Mengin Fixed HUD (Header, Back to Top, Info/Work Toggle, Scroll Progress) */}
       <StevenHUD
         currentView={currentView}
         onToggleView={handleToggleView}
@@ -36,34 +37,66 @@ export default function Home() {
       {/* Main View Transition */}
       {currentView === "work" ? (
         <main className="relative z-20 pt-20">
-          {/* Hero Section (Non-overlapping, architectural presentation) */}
+          {/* Hero Section with Staggered Motion and Mobile Scroll Prompt */}
           <section
             aria-label="Hero"
             className="min-h-[75vh] flex flex-col items-center justify-center text-center px-6 py-20 relative max-w-4xl mx-auto"
           >
             <div className="space-y-6">
-              <span className="style-meta-tag text-white/50 text-[10px] tracking-[0.3em] block">
+              <motion.span
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="style-meta-tag text-white/50 text-[10px] tracking-[0.3em] block"
+              >
                 Independent Trading Desk &amp; Strategy
-              </span>
-              <h1 className="style-hero-name text-white">
+              </motion.span>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 25 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                className="style-hero-name text-white"
+              >
                 Eman Trades
-              </h1>
-              <p className="style-meta-tag text-white/70 tracking-[0.25em] text-xs sm:text-sm">
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+                className="style-meta-tag text-white/70 tracking-[0.25em] text-xs sm:text-sm"
+              >
                 Market Analyst &amp; Financial Strategist
-              </p>
-              <p className="style-copy-body text-white/60 max-w-xl mx-auto pt-2 text-sm sm:text-base leading-relaxed">
+              </motion.p>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.3 }}
+                className="style-copy-body text-white/60 max-w-xl mx-auto pt-2 text-sm sm:text-base leading-relaxed"
+              >
                 Institutional Order Flow, Liquidity Architecture &amp; Probabilistic Risk Engineering across Global Futures and Foreign Exchange.
-              </p>
+              </motion.p>
             </div>
 
-            <div className="pt-16 sm:pt-20">
-              <span className="style-meta-tag text-white/35 text-[9px] tracking-[0.25em] animate-pulse">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+              className="pt-16 sm:pt-20 flex flex-col items-center"
+            >
+              <motion.span
+                animate={{ y: [0, 6, 0] }}
+                transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
+                className="style-meta-tag text-white/40 text-[9px] tracking-[0.25em] block"
+              >
                 ↓ Scroll to examine documented executions
-              </span>
-            </div>
+              </motion.span>
+            </motion.div>
           </section>
 
-          {/* Project Showcases (Dual-column: Left year/title/narrative, Right large interactive slideshow) */}
+          {/* Project Showcases with Dual-Column Layout and Mobile Swipe Gestures */}
           <section aria-label="Selected Projects">
             {stevenProjects.map((project) => (
               <ProjectShowcase
@@ -77,7 +110,7 @@ export default function Home() {
           {/* Inspiring Trading Psychology & Motivating Quotes */}
           <QuotesSection />
 
-          {/* Numbered Historical Ledger & Selected Case Studies with Floating Hover Image Previews */}
+          {/* Numbered Historical Ledger & Selected Case Studies with Floating Hover Previews */}
           <section aria-label="Archive & Selected Case Studies">
             <ArchiveHoverList
               entries={stevenArchiveEntries}
@@ -85,8 +118,12 @@ export default function Home() {
             />
           </section>
 
-          {/* Private Mentorship CTA Section (High-Contrast, Visible Button) */}
-          <section
+          {/* Private Mentorship CTA Section with Scroll Reveal */}
+          <motion.section
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
             aria-label="1-on-1 Mentorship"
             className="w-full max-w-[1080px] mx-auto py-16 sm:py-24 px-4 sm:px-8 md:px-10 border-hairline-t"
           >
@@ -104,7 +141,9 @@ export default function Home() {
               </div>
 
               <div className="lg:col-span-4 lg:text-right pt-2 lg:pt-0">
-                <a
+                <motion.a
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.96 }}
                   href="https://wa.me/923156828906?text=Hello%20Eman,%20I%20am%20interested%20in%20your%201-on-1%20Trading%20Mentorship%20program."
                   target="_blank"
                   rel="noopener noreferrer"
@@ -115,13 +154,19 @@ export default function Home() {
                   <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse shrink-0" aria-hidden="true" />
                   <span className="!text-black font-bold">GET MENTORSHIP</span>
                   <span className="!text-black font-bold" aria-hidden="true">→</span>
-                </a>
+                </motion.a>
               </div>
             </div>
-          </section>
+          </motion.section>
 
-          {/* Fully Compliant Legal & Business Details Footer */}
-          <footer className="w-full max-w-[1080px] mx-auto py-12 sm:py-16 px-4 sm:px-8 md:px-10 border-hairline-t space-y-8">
+          {/* Fully Compliant Legal & Business Details Footer with Scroll Entrance */}
+          <motion.footer
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="w-full max-w-[1080px] mx-auto py-12 sm:py-16 px-4 sm:px-8 md:px-10 border-hairline-t space-y-8"
+          >
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 text-white/60">
               <div className="md:col-span-6 space-y-2">
                 <span className="style-meta-tag text-white/80 block text-[9.5px]">
@@ -173,7 +218,7 @@ export default function Home() {
                 <span>DISCIPLINE • SYSTEMATICS • OBJECTIVITY</span>
               </div>
             </div>
-          </footer>
+          </motion.footer>
         </main>
       ) : (
         <main className="relative z-20">

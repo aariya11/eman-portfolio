@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { soundEngine } from "@/lib/audio";
+import { motion, useScroll } from "framer-motion";
 
 interface StevenHUDProps {
   currentView: "work" | "info";
@@ -11,7 +10,7 @@ interface StevenHUDProps {
 
 export function StevenHUD({ currentView, onToggleView }: StevenHUDProps) {
   const [scrollY, setScrollY] = useState(0);
-  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+  const { scrollYProgress } = useScroll();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,16 +22,6 @@ export function StevenHUD({ currentView, onToggleView }: StevenHUDProps) {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  const handleAudioToggle = async () => {
-    if (isAudioPlaying) {
-      soundEngine.stop();
-      setIsAudioPlaying(false);
-    } else {
-      const started = await soundEngine.start();
-      if (started) setIsAudioPlaying(true);
-    }
-  };
 
   const scrollToTop = () => {
     if (typeof window !== "undefined" && (window as any).lenis) {
@@ -95,22 +84,11 @@ export function StevenHUD({ currentView, onToggleView }: StevenHUDProps) {
         </div>
       )}
 
-      {/* 5. Fixed Bottom-Left: Minimal Audio Toggle */}
-      <div className="fixed bottom-6 md:bottom-7 left-4 md:left-10 z-40 flex items-center gap-3">
-        <button
-          onClick={handleAudioToggle}
-          className="w-7 h-7 rounded-full border border-white/20 hover:border-white bg-black/70 backdrop-blur-sm flex items-center justify-center transition-all group focus-visible:ring-2 focus-visible:ring-white outline-none"
-          title={isAudioPlaying ? "Mute atmospheric audio" : "Play atmospheric audio"}
-          aria-label={isAudioPlaying ? "Mute audio" : "Play audio"}
-          data-cursor="pointer"
-        >
-          <span
-            className={`w-1.5 h-1.5 rounded-full transition-all ${
-              isAudioPlaying ? "bg-white animate-ping" : "bg-white/50 group-hover:bg-white"
-            }`}
-          />
-        </button>
-      </div>
+      {/* Top Scroll Progress Indicator */}
+      <motion.div
+        style={{ scaleX: scrollYProgress }}
+        className="fixed top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-white/40 via-white to-white/80 origin-left z-[70] pointer-events-none"
+      />
     </>
   );
 }

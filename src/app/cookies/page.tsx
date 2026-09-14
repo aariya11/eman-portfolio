@@ -77,12 +77,6 @@ export default function CookiePolicyPage() {
                   <td className="p-3">Persistent (1 year)</td>
                   <td className="p-3">Remembers your acknowledgement of our privacy &amp; cookie notice.</td>
                 </tr>
-                <tr>
-                  <td className="p-3 font-mono text-white">audio_preference</td>
-                  <td className="p-3">Session Memory</td>
-                  <td className="p-3">Session</td>
-                  <td className="p-3">Remembers whether the ambient audio toggle is enabled or muted during your visit.</td>
-                </tr>
               </tbody>
             </table>
           </div>

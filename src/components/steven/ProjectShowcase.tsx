@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import { Maximize2 } from "lucide-react";
+import { motion, AnimatePresence, PanInfo } from "framer-motion";
+import { Maximize2, ChevronLeft, ChevronRight } from "lucide-react";
 
 export interface ShowcaseProject {
   id: string;
@@ -52,26 +52,49 @@ export function ProjectShowcase({ project, onExpandSlide }: ProjectShowcaseProps
     }
   };
 
+  // Mobile swipe gesture handler
+  const handleDragEnd = (_: any, info: PanInfo) => {
+    const swipeThreshold = 35;
+    const velocityThreshold = 250;
+    if (info.offset.x < -swipeThreshold || info.velocity.x < -velocityThreshold) {
+      nextSlide();
+    } else if (info.offset.x > swipeThreshold || info.velocity.x > velocityThreshold) {
+      prevSlide();
+    }
+  };
+
   return (
-    <article className="w-full max-w-[1080px] mx-auto py-16 sm:py-24 md:py-28 px-4 sm:px-8 md:px-10 border-hairline-b">
+    <motion.article
+      initial={{ opacity: 0, y: 35 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+      className="w-full max-w-[1080px] mx-auto py-16 sm:py-24 md:py-28 px-4 sm:px-8 md:px-10 border-hairline-b"
+    >
       {/* Top Row: Year, Title, and Slideshow */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start mb-8 sm:mb-10">
         {/* Left Column: Year & Title */}
-        <div className="lg:col-span-4 space-y-3">
+        <motion.div
+          initial={{ opacity: 0, x: -15 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="lg:col-span-4 space-y-3"
+        >
           <span className="style-meta-tag block text-white/50 text-[9px] tracking-[0.2em]">
             {project.year}
           </span>
           <h2 className="style-project-title break-words">
             {project.title}
           </h2>
-        </div>
+        </motion.div>
 
-        {/* Right Column: Interactive Slideshow (754px equivalent) */}
+        {/* Right Column: Interactive Slideshow */}
         <div className="lg:col-span-8 relative">
-          <div
+          <motion.div
             tabIndex={0}
             role="region"
-            aria-label={`${project.title} trading chart slideshow. Use left and right arrow keys to navigate slides.`}
+            aria-label={`${project.title} trading chart slideshow. Use left and right arrow keys or swipe to navigate slides.`}
             onClick={handleSlideClick}
             onMouseMove={handleMouseMove}
             onKeyDown={(e) => {
@@ -83,18 +106,26 @@ export function ProjectShowcase({ project, onExpandSlide }: ProjectShowcaseProps
                 prevSlide();
               }
             }}
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
             className="relative w-full aspect-[16/9] bg-black overflow-hidden group cursor-pointer border border-white/15 select-none focus-visible:ring-2 focus-visible:ring-white outline-none"
             data-cursor="pointer"
           >
-            {/* Slide Images with crossfade */}
+            {/* Slide Images with animated crossfade and mobile touch drag */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentSlide}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.35, ease: "easeInOut" }}
-                className="absolute inset-0 w-full h-full"
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.2}
+                onDragEnd={handleDragEnd}
+                initial={{ opacity: 0, scale: 1.03 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+                className="absolute inset-0 w-full h-full touch-pan-y"
               >
                 <Image
                   src={project.slides[currentSlide].image}
@@ -103,10 +134,22 @@ export function ProjectShowcase({ project, onExpandSlide }: ProjectShowcaseProps
                   priority={project.id === "es-liquidity-sweep-2025" && currentSlide === 0}
                   quality={80}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 754px"
-                  className="object-cover"
+                  className="object-cover pointer-events-none"
                 />
               </motion.div>
             </AnimatePresence>
+
+            {/* Slide Progress Fill Line at bottom of image */}
+            <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-white/15 z-20 pointer-events-none">
+              <motion.div
+                className="h-full bg-white origin-left"
+                initial={false}
+                animate={{
+                  width: `${((currentSlide + 1) / project.slides.length) * 100}%`,
+                }}
+                transition={{ duration: 0.3 }}
+              />
+            </div>
 
             {/* Slide Counter Overlay */}
             <div className="absolute bottom-3 right-4 z-20 style-meta-tag text-[9px] text-white/90 bg-black/75 px-2.5 py-1 tracking-[0.2em] pointer-events-none">
@@ -129,18 +172,53 @@ export function ProjectShowcase({ project, onExpandSlide }: ProjectShowcaseProps
               </button>
             )}
 
-            {/* Subtle Directional Hover Indicators */}
+            {/* Subtle Directional Hover Indicators on Desktop */}
             <div
-              className={`absolute bottom-3 left-4 z-20 style-meta-tag text-[7.5px] text-white/50 bg-black/60 px-2 py-0.5 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity`}
+              className="hidden sm:block absolute bottom-3 left-4 z-20 style-meta-tag text-[7.5px] text-white/50 bg-black/60 px-2 py-0.5 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity"
             >
               {cursorSide === "left" ? "← PREV SLIDE" : "NEXT SLIDE →"}
+            </div>
+          </motion.div>
+
+          {/* Mobile Slide Navigation Buttons & Swipe Indicator */}
+          <div className="flex sm:hidden items-center justify-between pt-2.5 px-1">
+            <span className="style-meta-tag text-[8px] text-white/40 tracking-wider">
+              ← Swipe to view slides →
+            </span>
+            <div className="flex items-center gap-1.5">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  prevSlide();
+                }}
+                className="p-1 border border-white/20 text-white/70 hover:text-white"
+                aria-label="Previous slide"
+              >
+                <ChevronLeft className="w-3.5 h-3.5" />
+              </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  nextSlide();
+                }}
+                className="p-1 border border-white/20 text-white/70 hover:text-white"
+                aria-label="Next slide"
+              >
+                <ChevronRight className="w-3.5 h-3.5" />
+              </button>
             </div>
           </div>
         </div>
       </div>
 
       {/* Metadata Row: Category/Role, Narrative, Confluences */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pt-2">
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.15 }}
+        className="grid grid-cols-1 md:grid-cols-12 gap-8 pt-2"
+      >
         {/* Col 1: Category & Role */}
         <div className="md:col-span-3 space-y-1.5">
           <p className="style-meta-tag text-white/40">
@@ -175,7 +253,7 @@ export function ProjectShowcase({ project, onExpandSlide }: ProjectShowcaseProps
             ))}
           </div>
         </div>
-      </div>
-    </article>
+      </motion.div>
+    </motion.article>
   );
 }

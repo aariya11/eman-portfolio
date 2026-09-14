@@ -2,7 +2,6 @@
 
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { soundEngine } from "@/lib/audio";
 
 interface MagneticButtonProps {
   children: React.ReactNode;
@@ -37,10 +36,6 @@ export function MagneticButton({
     setPosition({ x: middleX * 0.2, y: middleY * 0.2 });
   };
 
-  const handleMouseEnter = () => {
-    soundEngine.playSubtleTick();
-  };
-
   const handleMouseLeave = () => {
     setPosition({ x: 0, y: 0 });
   };
@@ -58,7 +53,6 @@ export function MagneticButton({
     <motion.div
       ref={ref}
       onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       animate={{ x: position.x, y: position.y }}
       transition={{ type: "spring", stiffness: 220, damping: 18, mass: 0.2 }}

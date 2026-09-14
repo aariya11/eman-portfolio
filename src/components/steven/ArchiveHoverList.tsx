@@ -22,22 +22,36 @@ export function ArchiveHoverList({ entries, onSelectEntry }: ArchiveHoverListPro
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="w-full max-w-[1080px] mx-auto py-20 sm:py-28 md:py-32 px-4 sm:px-8 md:px-10 relative">
-      <div className="mb-8 sm:mb-10">
+    <motion.section
+      initial={{ opacity: 0, y: 35 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+      className="w-full max-w-[1080px] mx-auto py-20 sm:py-28 md:py-32 px-4 sm:px-8 md:px-10 relative"
+    >
+      <div className="flex items-center justify-between mb-8 sm:mb-10">
         <span className="style-meta-tag block text-white/50 text-[9px] tracking-[0.2em]">
           Historical Ledger &amp; Selected Case Studies
+        </span>
+        <span className="sm:hidden style-meta-tag text-[8px] text-white/35 tracking-wider">
+          Tap entry to inspect chart
         </span>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative">
-        {/* Left Column: Numbered Archive Items */}
-        <div className="lg:col-span-6 space-y-3">
+        {/* Left Column: Numbered Archive Items with Staggered Scroll Animation */}
+        <div className="lg:col-span-6 space-y-2 sm:space-y-3">
           {entries.map((item, idx) => {
             const isHovered = hoveredIndex === idx;
 
             return (
-              <div
+              <motion.div
                 key={item.number}
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: Math.min(idx * 0.03, 0.4) }}
+                whileTap={{ scale: 0.98 }}
                 tabIndex={0}
                 role="button"
                 aria-label={`View chart for ${item.title}`}
@@ -50,7 +64,7 @@ export function ArchiveHoverList({ entries, onSelectEntry }: ArchiveHoverListPro
                     onSelectEntry && onSelectEntry(item);
                   }
                 }}
-                className="cursor-pointer transition-opacity duration-200 py-1 focus-visible:ring-1 focus-visible:ring-white outline-none"
+                className="cursor-pointer transition-opacity duration-200 py-1.5 px-2 -mx-2 hover:bg-white/[0.02] border-b border-white/[0.04] focus-visible:ring-1 focus-visible:ring-white outline-none rounded-none"
                 data-cursor="explore"
               >
                 <p
@@ -60,12 +74,12 @@ export function ArchiveHoverList({ entries, onSelectEntry }: ArchiveHoverListPro
                 >
                   <span className="text-white/30 mr-1.5">{item.number}.</span> {item.title} <span className="text-white/30">({item.year})</span>
                 </p>
-              </div>
+              </motion.div>
             );
           })}
         </div>
 
-        {/* Right Column: Floating Image Preview */}
+        {/* Right Column: Floating Image Preview (Desktop) */}
         <div className="hidden lg:block lg:col-span-6 sticky top-36 h-[330px] pointer-events-none">
           <AnimatePresence mode="wait">
             {hoveredIndex !== null && (
@@ -94,6 +108,6 @@ export function ArchiveHoverList({ entries, onSelectEntry }: ArchiveHoverListPro
           </AnimatePresence>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

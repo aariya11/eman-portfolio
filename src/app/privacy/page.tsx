@@ -61,7 +61,7 @@ export default function PrivacyPolicyPage() {
               <strong>Direct Messaging Communications:</strong> Mobile phone number, display handle, and communication history initiated voluntarily by you via WhatsApp or email.
             </li>
             <li>
-              <strong>Essential Session Tokens:</strong> Strictly necessary client-side local storage entries storing interface state (such as audio mute toggle preference and cookie banner consent acknowledgement).
+              <strong>Essential Session Tokens:</strong> Strictly necessary client-side local storage entries storing interface state (such as cookie banner consent acknowledgement).
             </li>
           </ul>
         </section>

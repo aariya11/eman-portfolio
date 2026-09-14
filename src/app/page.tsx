@@ -36,7 +36,7 @@ export default function Home() {
         <main className="relative z-20">
           {/* Hero Opening Spacer (Allows the centered fixed hero to command the viewport upon entry) */}
           <div className="h-[80vh] min-h-[500px] w-full flex items-end justify-center pb-12 pointer-events-none">
-            <span className="style-meta-uppercase text-white/30 text-[9px] tracking-[0.25em] animate-pulse">
+            <span className="style-meta-tag text-white/30 text-[8.5px] tracking-[0.25em] animate-pulse">
               ↓ Scroll to inspect projects
             </span>
           </div>
@@ -61,11 +61,11 @@ export default function Home() {
           </section>
 
           {/* Minimalist Steven Mengin Style Footer */}
-          <footer className="w-full max-w-[1080px] mx-auto py-16 px-6 md:px-10 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-white/40">
-            <p className="style-meta-uppercase text-[8px]">
+          <footer className="w-full max-w-[1080px] mx-auto py-16 px-6 md:px-10 border-hairline-t flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-white/40">
+            <p className="style-meta-tag text-[7.5px]">
               © {new Date().getFullYear()} EMAN TRADES. ALL RIGHTS RESERVED.
             </p>
-            <p className="style-meta-uppercase text-[8px]">
+            <p className="style-meta-tag text-[7.5px]">
               MARKETS. DISCIPLINE. PRECISION.
             </p>
           </footer>

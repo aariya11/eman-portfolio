@@ -22,16 +22,16 @@ export function ArchiveHoverList({ entries, onSelectEntry }: ArchiveHoverListPro
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <div className="w-full max-w-[1080px] mx-auto py-28 px-6 md:px-10 relative">
-      <div className="mb-8">
-        <span className="style-meta-uppercase text-white/50 block">
+    <section className="w-full max-w-[1080px] mx-auto py-32 px-6 md:px-10 relative">
+      <div className="mb-10">
+        <span className="style-meta-tag block text-white/40">
           Historical Ledger &amp; Selected Case Studies
         </span>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative">
-        {/* Left: Numbered Archive Items */}
-        <div className="lg:col-span-6 space-y-2.5">
+        {/* Left Column: Numbered Archive Items */}
+        <div className="lg:col-span-6 space-y-3">
           {entries.map((item, idx) => {
             const isHovered = hoveredIndex === idx;
 
@@ -41,12 +41,12 @@ export function ArchiveHoverList({ entries, onSelectEntry }: ArchiveHoverListPro
                 onMouseEnter={() => setHoveredIndex(idx)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 onClick={() => onSelectEntry && onSelectEntry(item)}
-                className="cursor-pointer transition-opacity duration-200 py-1"
+                className="cursor-pointer transition-opacity duration-200 py-0.5"
                 data-cursor="explore"
               >
                 <p
-                  className={`style-copy-8px transition-colors duration-200 ${
-                    isHovered ? "text-white opacity-100 font-medium" : "text-white/40"
+                  className={`style-copy-body transition-colors duration-200 text-[8.5px] leading-[14px] ${
+                    isHovered ? "text-white opacity-100 font-normal" : "text-white/35"
                   }`}
                 >
                   {item.number}. {item.title} {item.year}
@@ -56,8 +56,8 @@ export function ArchiveHoverList({ entries, onSelectEntry }: ArchiveHoverListPro
           })}
         </div>
 
-        {/* Right / Center: Floating Image Preview (Steven Mengin signature) */}
-        <div className="hidden lg:block lg:col-span-6 sticky top-36 h-[340px] pointer-events-none">
+        {/* Right Column: Floating Image Preview */}
+        <div className="hidden lg:block lg:col-span-6 sticky top-36 h-[330px] pointer-events-none">
           <AnimatePresence mode="wait">
             {hoveredIndex !== null && (
               <motion.div
@@ -65,18 +65,18 @@ export function ArchiveHoverList({ entries, onSelectEntry }: ArchiveHoverListPro
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 0.85, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.98 }}
-                transition={{ duration: 0.25, ease: "easeOut" }}
-                className="relative w-full h-full border border-white/10 overflow-hidden bg-black shadow-2xl"
+                transition={{ duration: 0.22, ease: "easeOut" }}
+                className="relative w-full h-full border border-white/10 overflow-hidden bg-black"
               >
                 <Image
                   src={entries[hoveredIndex].image}
                   alt={entries[hoveredIndex].title}
                   fill
                   sizes="480px"
-                  className="object-cover"
+                  className="object-cover filter contrast-[1.05]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
-                <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-[8px] font-mono text-white/70 style-meta-uppercase">
+                <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between style-meta-tag text-[7.5px] text-white/60">
                   <span>{entries[hoveredIndex].category}</span>
                   <span>{entries[hoveredIndex].year}</span>
                 </div>
@@ -85,6 +85,6 @@ export function ArchiveHoverList({ entries, onSelectEntry }: ArchiveHoverListPro
           </AnimatePresence>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

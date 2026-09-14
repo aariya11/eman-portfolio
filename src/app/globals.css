@@ -20,9 +20,12 @@ html {
 body {
   background-color: #000000;
   color: #ffffff;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Lenis smooth scroll recommended CSS */
+/* Lenis smooth momentum scrolling */
 html.lenis,
 html.lenis body {
   height: auto;
@@ -40,73 +43,103 @@ html.lenis body {
   overflow: hidden;
 }
 
-/* Steven Mengin Typography System */
-.style-title-large {
-  font-family: var(--font-bodoni), Georgia, serif;
+/* Custom Editorial Typography Classes */
+.style-hero-name {
+  font-family: var(--font-editorial), Newsreader, Georgia, serif;
   font-style: italic;
-  font-size: clamp(40px, 6vw, 68px);
+  font-size: clamp(52px, 6.8vw, 84px);
+  line-height: 0.92;
+  font-weight: 300;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+}
+
+.style-project-title {
+  font-family: var(--font-editorial), Newsreader, Georgia, serif;
+  font-style: italic;
+  font-size: clamp(38px, 4.5vw, 56px);
   line-height: 0.95;
-  font-weight: 400;
+  font-weight: 300;
+  letter-spacing: -0.015em;
   color: #ffffff;
 }
 
-.style-hero-title {
-  font-family: var(--font-bodoni), Georgia, serif;
+.style-narrative-lead {
+  font-family: var(--font-editorial), Newsreader, Georgia, serif;
   font-style: italic;
-  font-size: clamp(44px, 5.5vw, 62px);
-  line-height: 0.95;
-  font-weight: 400;
+  font-size: clamp(22px, 2.3vw, 29px);
+  line-height: 1.36;
+  font-weight: 300;
   color: #ffffff;
 }
 
-.style-narrative {
-  font-family: var(--font-bodoni), Georgia, serif;
-  font-style: italic;
-  font-size: clamp(22px, 2.5vw, 29px);
-  line-height: 1.35;
-  font-weight: 400;
-  color: #ffffff;
-}
-
-.style-copy-8px {
-  font-family: var(--font-jakarta), system-ui, sans-serif;
+.style-meta-tag {
+  font-family: var(--font-syne), sans-serif;
   font-size: 8.5px;
-  line-height: 13px;
-  color: rgba(255, 255, 255, 0.65);
-}
-
-.style-meta-uppercase {
-  font-family: var(--font-jakarta), system-ui, sans-serif;
-  font-size: 8px;
   line-height: 12px;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.22em;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.45);
 }
 
-.style-link-press {
-  font-family: var(--font-bodoni), Georgia, serif;
+.style-copy-body {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 9px;
+  line-height: 14.5px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.style-press-link {
+  font-family: var(--font-editorial), Newsreader, Georgia, serif;
   font-style: italic;
-  font-size: 13px;
-  line-height: 18px;
-  color: #a4a4a4;
-  transition: color 0.2s ease;
+  font-size: 13.5px;
+  line-height: 19px;
+  color: rgba(255, 255, 255, 0.45);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.style-link-press:hover {
+.style-press-link:hover {
   color: #ffffff;
+  transform: translateX(3px);
 }
 
-/* Custom scrollbar */
+/* Subtle hairline borders */
+.border-hairline {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.border-hairline-b {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.border-hairline-t {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Micro scrollbar */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 3px;
 }
 ::-webkit-scrollbar-track {
   background: #000000;
 }
 ::-webkit-scrollbar-thumb {
-  background: #222222;
+  background: #1c1c1c;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #555555;
+  background: #444444;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

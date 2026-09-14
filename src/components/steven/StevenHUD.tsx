@@ -44,74 +44,74 @@ export function StevenHUD({ currentView, onToggleView }: StevenHUDProps) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // Centered Hero fade calculation: fades out between scroll 0 and 320px
-  const heroOpacity = Math.max(0, 1 - scrollY / 240);
-  const heroScale = Math.max(0.92, 1 - scrollY / 1200);
+  // Hero fade: fades between scroll 0 and 260px
+  const heroOpacity = Math.max(0, 1 - scrollY / 220);
+  const heroScale = Math.max(0.94, 1 - scrollY / 1400);
 
-  // Top-left logo fades in after scrollY > 200px
-  const topLeftOpacity = Math.min(1, Math.max(0, (scrollY - 180) / 120));
+  // Top-left logo fades in after 160px scroll
+  const topLeftOpacity = Math.min(1, Math.max(0, (scrollY - 150) / 100));
 
   return (
     <>
       {/* 1. Fixed Top-Left: "Eman Trades" Back to Top link */}
       <motion.div
         style={{ opacity: currentView === "info" ? 1 : topLeftOpacity }}
-        className="fixed top-5 left-6 md:left-9 z-50 pointer-events-auto"
+        className="fixed top-6 left-6 md:left-10 z-50 pointer-events-auto"
       >
         <button
           onClick={scrollToTop}
-          className="font-serif italic text-sm tracking-wide text-white hover:text-white/70 transition-opacity"
+          className="style-press-link text-sm tracking-wide text-white hover:text-white/60 transition-opacity"
         >
           Eman Trades
         </button>
       </motion.div>
 
       {/* 2. Fixed Top-Right: "Info" / "Work" Button */}
-      <div className="fixed top-4 right-6 md:right-9 z-50">
+      <div className="fixed top-6 right-6 md:right-10 z-50">
         <button
           onClick={onToggleView}
-          className="style-meta-uppercase text-white hover:text-white/70 transition-colors py-2 px-3 tracking-widest text-[11px]"
+          className="style-meta-tag text-white hover:text-white/60 transition-colors py-1.5 px-2 tracking-[0.24em] text-[10px]"
           data-cursor="pointer"
         >
           {currentView === "work" ? "Info" : "Work"}
         </button>
       </div>
 
-      {/* 3. Fixed Screen Center: Hero Title (Only in Work view, fades on scroll) */}
+      {/* 3. Fixed Screen Center: Hero Title (Fades smoothly on scroll) */}
       {currentView === "work" && (
         <div
-          className="fixed inset-0 pointer-events-none flex flex-col items-center justify-center z-30 transition-opacity"
+          className="fixed inset-0 pointer-events-none flex flex-col items-center justify-center z-30 transition-opacity duration-300"
           style={{
             opacity: heroOpacity,
             transform: `scale(${heroScale})`,
           }}
         >
-          <h1 className="style-hero-title text-center text-white tracking-normal select-none">
+          <h1 className="style-hero-name text-center text-white select-none">
             Eman Trades
           </h1>
-          <p className="style-meta-uppercase text-center text-white/70 pt-2 tracking-[0.25em]">
+          <p className="style-meta-tag text-center text-white/55 pt-3 tracking-[0.28em]">
             Market Analyst &amp; Financial Strategist
           </p>
         </div>
       )}
 
-      {/* 4. Fixed Bottom-Right: Micro Specialization Copy */}
-      <div className="fixed bottom-6 right-6 md:right-9 z-40 max-w-[250px] text-right pointer-events-none hidden sm:block">
-        <p className="style-copy-8px text-white/45">
+      {/* 4. Fixed Bottom-Right: Micro Specialization Details */}
+      <div className="fixed bottom-7 right-6 md:right-10 z-40 max-w-[240px] text-right pointer-events-none hidden sm:block">
+        <p className="style-copy-body text-white/35 text-[8px] leading-[13px]">
           Specialization includes Foreign Exchange, Precious Metals, US Equity Benchmarks, Macro Yield Curves and Algorithmic Liquidity.
         </p>
       </div>
 
-      {/* 5. Fixed Bottom-Left: Minimal Status / Audio Toggle Dot */}
-      <div className="fixed bottom-6 left-6 md:left-9 z-40 flex items-center gap-3">
+      {/* 5. Fixed Bottom-Left: Minimal Status / Audio Toggle */}
+      <div className="fixed bottom-7 left-6 md:left-10 z-40 flex items-center gap-3">
         <button
           onClick={handleAudioToggle}
-          className="w-7 h-7 rounded-full border border-white/20 hover:border-white/60 bg-black/60 backdrop-blur-sm flex items-center justify-center transition-all group"
-          title={isAudioPlaying ? "Atmospheric sound: ON (Click to mute)" : "Atmospheric sound: OFF (Click to listen)"}
+          className="w-6 h-6 rounded-full border border-white/15 hover:border-white/50 bg-black/60 backdrop-blur-sm flex items-center justify-center transition-all group"
+          title={isAudioPlaying ? "Atmospheric audio: ON (Click to mute)" : "Atmospheric audio: OFF (Click to listen)"}
           data-cursor="pointer"
         >
           <span
-            className={`w-1.5 h-1.5 rounded-full transition-all ${
+            className={`w-1 h-1 rounded-full transition-all ${
               isAudioPlaying ? "bg-white animate-ping" : "bg-white/40 group-hover:bg-white"
             }`}
           />
@@ -120,11 +120,11 @@ export function StevenHUD({ currentView, onToggleView }: StevenHUDProps) {
         {marketStatus && (
           <div className="hidden md:flex items-center gap-2">
             <span
-              className={`w-1.5 h-1.5 rounded-full ${
+              className={`w-1 h-1 rounded-full ${
                 marketStatus.isOpen ? "bg-emerald-400" : "bg-amber-400"
               }`}
             />
-            <span className="style-meta-uppercase text-[7.5px] text-white/40">
+            <span className="style-meta-tag text-[7px] text-white/35 tracking-[0.2em]">
               {marketStatus.statusText} • {marketStatus.utcTime}
             </span>
           </div>

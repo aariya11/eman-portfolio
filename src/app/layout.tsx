@@ -1,36 +1,28 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Plus_Jakarta_Sans, JetBrains_Mono, Bodoni_Moda } from "next/font/google";
+import { Newsreader, Syne, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/common/SmoothScroll";
 import { CustomCursor } from "@/components/common/CustomCursor";
 
-const bodoni = Bodoni_Moda({
+const newsreader = Newsreader({
   subsets: ["latin"],
-  variable: "--font-bodoni",
+  variable: "--font-editorial",
   style: ["italic", "normal"],
-  weight: ["400", "500", "600"],
+  weight: ["300", "400", "500", "600"],
   display: "swap",
   adjustFontFallback: false,
 });
 
-const cormorant = Cormorant_Garamond({
+const syne = Syne({
   subsets: ["latin"],
-  variable: "--font-cormorant",
-  style: ["italic", "normal"],
-  weight: ["300", "400", "500", "600"],
+  variable: "--font-syne",
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-jakarta",
-  weight: ["300", "400", "500", "600"],
-  display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
+  variable: "--font-sans",
   weight: ["300", "400", "500"],
   display: "swap",
 });
@@ -72,7 +64,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bodoni.variable} ${cormorant.variable} ${jakarta.variable} ${jetbrainsMono.variable} bg-black`}
+      className={`${newsreader.variable} ${syne.variable} ${jakarta.variable} bg-black`}
     >
       <body className="bg-black text-white antialiased overflow-x-hidden selection:bg-white selection:text-black">
         <SmoothScroll>

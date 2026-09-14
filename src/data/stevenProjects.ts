@@ -1,0 +1,185 @@
+import { ShowcaseProject } from "@/components/steven/ProjectShowcase";
+import { ArchiveEntry } from "@/components/steven/ArchiveHoverList";
+
+export const stevenProjects: ShowcaseProject[] = [
+  {
+    id: "gold-liquidity-2025",
+    year: "2025",
+    title: "Gold Liquidity Sweep 2025",
+    category: "PRECIOUS METALS / MACRO",
+    role: "Independent Trader",
+    narrative: [
+      "For the Autumn 2025 trading cycle, we targeted an engineered liquidity sweep beneath the Asian session consolidation on Gold (XAU/USD). The thesis centered on the divergence between retreating 10-Year sovereign yields and aggressive limit-order absorption at the 4-hour bullish Fair Value Gap.",
+      "Execution waited for London session opening orders to trigger resting retail stop clusters beneath 2,631 USD before entering on a 5-minute Market Structure Shift. The position expanded cleanly toward external buy-side liquidity, yielding +4.12R with strict risk capping at 1.0% NAV.",
+      "This setup exemplifies our structural execution doctrine: avoiding retail breakout traps, prioritizing asymmetric risk-to-reward, and capitalising on interbank institutional order delivery.",
+    ],
+    links: [
+      { label: "London Liquidity Sweep" },
+      { label: "4H Fair Value Gap Mitigation" },
+      { label: "5M Market Structure Shift" },
+      { label: "TIPS 10Y Yield Inversion" },
+      { label: "Target: 2,668.50 USD (+4.12R)" },
+    ],
+    slides: [
+      { image: "/images/journal_market_structure.jpg" },
+      { image: "/images/eman_hero.jpg" },
+      { image: "/images/cinematic_architecture.jpg" },
+    ],
+  },
+  {
+    id: "euro-invalidation-2025",
+    year: "2025",
+    title: "Euro London Invalidation 2025",
+    category: "FOREIGN EXCHANGE / LIQUIDITY",
+    role: "Independent Trader",
+    narrative: [
+      "EUR/USD rallied into the weekly key resistance zone during Frankfurt open, completing an engineered buy-side liquidity run above the prior week's high. Immediate rejection wicks indicated institutional distribution and lack of buy-side follow-through.",
+      "Execution initiated on a 1-hour displacement closure below internal swing lows. Position risk was anchored above the London swing crest, targeting internal discount range liquidity at 1.0858, resulting in a +3.22R asymmetric return.",
+      "Operating during the London-New York overlap allowed capturing institutional liquidation of late breakout buyers who entered prematurely on headline noise.",
+    ],
+    links: [
+      { label: "Prior Week High Liquidity Purge" },
+      { label: "1H Bearish Displacement Void" },
+      { label: "Premium Dealing Range (50%+)" },
+      { label: "Order Book Defense at 1.0950" },
+      { label: "Target: 1.0858 EUR/USD (+3.22R)" },
+    ],
+    slides: [
+      { image: "/images/cinematic_architecture.jpg" },
+      { image: "/images/journal_market_structure.jpg" },
+      { image: "/images/eman_about.jpg" },
+    ],
+  },
+  {
+    id: "nasdaq-opening-drive-2025",
+    year: "2025",
+    title: "Nasdaq Opening Drive 2025",
+    category: "EQUITY BENCHMARK / VOLATILITY",
+    role: "Independent Trader",
+    narrative: [
+      "At the NYSE cash open, E-mini Nasdaq 100 retested previous day Volume Point of Control (VPOC) under heavy institutional volume. Absorption by passive bids formed a pristine liquidity shelf.",
+      "As price reclaimed the opening range VWAP, an asymmetric expansion setup activated, targeting untested weekly supply at 20,680 pts (+4.15R return on 1% risk).",
+      "The divergence between resilient order book depth and negative retail sentiment provided pristine institutional asymmetric risk.",
+    ],
+    links: [
+      { label: "Volume Point of Control (VPOC)" },
+      { label: "Opening Range VWAP Reclaim" },
+      { label: "Cumulative Volume Delta (CVD)" },
+      { label: "Target: 20,680.00 pts (+4.15R)" },
+    ],
+    slides: [
+      { image: "/images/eman_about.jpg" },
+      { image: "/images/cinematic_architecture.jpg" },
+      { image: "/images/journal_market_structure.jpg" },
+    ],
+  },
+  {
+    id: "execution-doctrine-2025",
+    year: "2025",
+    title: "The Edge is Discipline 2025",
+    category: "DOCTRINE / DISCIPLINE",
+    role: "Market Strategist",
+    narrative: [
+      "Trading is not about prediction; it is about preparation. The four non-negotiable tenets of the Eman Trades edge: 01 Process Over Prediction, 02 Risk Before Reward, 03 Patience Creates Opportunity, and 04 Execution Without Emotion.",
+      "By decoupling emotional self-worth from terminal P&L and treating execution as systematic risk engineering, the operator remains calm, mathematically consistent, and impervious to short-term market noise.",
+    ],
+    links: [
+      { label: "01. Process Over Prediction" },
+      { label: "02. Risk Before Reward (Fixed 1%)" },
+      { label: "03. Patience Creates Opportunity" },
+      { label: "04. Execution Without Emotion" },
+    ],
+    slides: [
+      { image: "/images/eman_hero.jpg" },
+      { image: "/images/eman_about.jpg" },
+      { image: "/images/journal_market_structure.jpg" },
+    ],
+  },
+];
+
+export const stevenArchiveEntries: ArchiveEntry[] = [
+  {
+    number: "01",
+    title: "XAU/USD: London Liquidity Sweep into 4H Order Block",
+    year: "2025",
+    category: "PRECIOUS METALS",
+    image: "/images/journal_market_structure.jpg",
+  },
+  {
+    number: "02",
+    title: "EUR/USD: Bearish Premium Liquidity Run into Prior Week High",
+    year: "2025",
+    category: "FOREIGN EXCHANGE",
+    image: "/images/cinematic_architecture.jpg",
+  },
+  {
+    number: "03",
+    title: "NQ100: NYSE Opening Drive Volatility Absorption",
+    year: "2025",
+    category: "EQUITY INDEX",
+    image: "/images/eman_about.jpg",
+  },
+  {
+    number: "04",
+    title: "US 10Y TIPS: Macro Real Yield Inversion Divergence",
+    year: "2024",
+    category: "GLOBAL MACRO",
+    image: "/images/eman_hero.jpg",
+  },
+  {
+    number: "05",
+    title: "BTC/USD: CME Futures Gap Liquidity Reclamation",
+    year: "2024",
+    category: "DIGITAL ASSETS",
+    image: "/images/cinematic_architecture.jpg",
+  },
+  {
+    number: "06",
+    title: "Process Over Prediction: Doctrine of Systematic Preparation",
+    year: "2025",
+    category: "PHILOSOPHY",
+    image: "/images/eman_about.jpg",
+  },
+  {
+    number: "07",
+    title: "Risk Before Reward: Fixed 1% Capital Preservation Model",
+    year: "2024",
+    category: "RISK MANAGEMENT",
+    image: "/images/journal_market_structure.jpg",
+  },
+  {
+    number: "08",
+    title: "Patience Creates Opportunity: The Discipline of Inaction",
+    year: "2024",
+    category: "PSYCHOLOGY",
+    image: "/images/eman_hero.jpg",
+  },
+  {
+    number: "09",
+    title: "Execution Without Emotion: Psychological Detachment",
+    year: "2023",
+    category: "PSYCHOLOGY",
+    image: "/images/cinematic_architecture.jpg",
+  },
+  {
+    number: "10",
+    title: "Institutional Flow: Interbank Order Delivery & Liquidity Pools",
+    year: "2023",
+    category: "MARKET STRUCTURE",
+    image: "/images/journal_market_structure.jpg",
+  },
+  {
+    number: "11",
+    title: "Sovereign Debt & Forex Valuation Dynamics",
+    year: "2023",
+    category: "FOREIGN EXCHANGE",
+    image: "/images/eman_about.jpg",
+  },
+  {
+    number: "12",
+    title: "Statistical Expectancy & Fractional Ruin Models",
+    year: "2022",
+    category: "QUANTITATIVE",
+    image: "/images/eman_hero.jpg",
+  },
+];

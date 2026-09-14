@@ -1,61 +1,87 @@
-import React from "react";
-import { Navigation } from "@/components/layout/Navigation";
-import { Hero } from "@/components/sections/Hero";
-import { EditorialIntro } from "@/components/sections/EditorialIntro";
-import { AboutEman } from "@/components/sections/AboutEman";
-import { Philosophy } from "@/components/sections/Philosophy";
-import { MarketWatch } from "@/components/sections/MarketWatch";
-import { Performance } from "@/components/sections/Performance";
-import { CaseStudies } from "@/components/sections/CaseStudies";
-import { CinematicBanner } from "@/components/sections/CinematicBanner";
-import { Journal } from "@/components/sections/Journal";
-import { SocialPresence } from "@/components/sections/SocialPresence";
-import { ContactSection } from "@/components/sections/ContactSection";
-import { Footer } from "@/components/layout/Footer";
+"use client";
+
+import React, { useState } from "react";
+import { StevenHUD } from "@/components/steven/StevenHUD";
+import { ProjectShowcase } from "@/components/steven/ProjectShowcase";
+import { ArchiveHoverList } from "@/components/steven/ArchiveHoverList";
+import { InfoView } from "@/components/steven/InfoView";
+import { ImageModal } from "@/components/steven/ImageModal";
+import { stevenProjects, stevenArchiveEntries } from "@/data/stevenProjects";
 
 export default function Home() {
+  const [currentView, setCurrentView] = useState<"work" | "info">("work");
+  const [expandedImage, setExpandedImage] = useState<string | null>(null);
+  const [expandedTitle, setExpandedTitle] = useState<string>("");
+
+  const handleToggleView = () => {
+    setCurrentView((prev) => (prev === "work" ? "info" : "work"));
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleExpandSlide = (image: string, title: string) => {
+    setExpandedImage(image);
+    setExpandedTitle(title);
+  };
+
   return (
-    <div className="relative min-h-screen bg-obsidian text-ivory selection:bg-champagne selection:text-obsidian">
-      {/* Fixed Luxury Navigation */}
-      <Navigation />
+    <div className="relative min-h-screen bg-black text-white selection:bg-white selection:text-black">
+      {/* Steven Mengin Fixed HUD (Header, Centered Hero Fade, Info/Work Toggle, Corner Details) */}
+      <StevenHUD
+        currentView={currentView}
+        onToggleView={handleToggleView}
+      />
 
-      <main id="main-content">
-        {/* 1. Hero Experience */}
-        <Hero />
+      {/* Main View Transition */}
+      {currentView === "work" ? (
+        <main className="relative z-20">
+          {/* Hero Opening Spacer (Allows the centered fixed hero to command the viewport upon entry) */}
+          <div className="h-[80vh] min-h-[500px] w-full flex items-end justify-center pb-12 pointer-events-none">
+            <span className="style-meta-uppercase text-white/30 text-[9px] tracking-[0.25em] animate-pulse">
+              ↓ Scroll to inspect projects
+            </span>
+          </div>
 
-        {/* 2. Editorial Transition */}
-        <EditorialIntro />
+          {/* Project Showcases (Dual-column: Left year/title/narrative, Right large interactive slideshow) */}
+          <section aria-label="Selected Projects">
+            {stevenProjects.map((project) => (
+              <ProjectShowcase
+                key={project.id}
+                project={project}
+                onExpandSlide={handleExpandSlide}
+              />
+            ))}
+          </section>
 
-        {/* 3. About Eman */}
-        <AboutEman />
+          {/* Numbered Historical Ledger & Selected Case Studies with Floating Hover Image Previews */}
+          <section aria-label="Archive & Selected Case Studies">
+            <ArchiveHoverList
+              entries={stevenArchiveEntries}
+              onSelectEntry={(entry) => handleExpandSlide(entry.image, entry.title)}
+            />
+          </section>
 
-        {/* 4. Trading Philosophy */}
-        <Philosophy />
+          {/* Minimalist Steven Mengin Style Footer */}
+          <footer className="w-full max-w-[1080px] mx-auto py-16 px-6 md:px-10 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-white/40">
+            <p className="style-meta-uppercase text-[8px]">
+              © {new Date().getFullYear()} EMAN TRADES. ALL RIGHTS RESERVED.
+            </p>
+            <p className="style-meta-uppercase text-[8px]">
+              MARKETS. DISCIPLINE. PRECISION.
+            </p>
+          </footer>
+        </main>
+      ) : (
+        <main className="relative z-20">
+          <InfoView onBackToWork={() => setCurrentView("work")} />
+        </main>
+      )}
 
-        {/* 5. Market Specialization */}
-        <MarketWatch />
-
-        {/* 6. Performance Section */}
-        <Performance />
-
-        {/* 7. Selected Trade Case Studies */}
-        <CaseStudies />
-
-        {/* 8. Cinematic Market Parallax Visual */}
-        <CinematicBanner />
-
-        {/* 9. Trading Journal */}
-        <Journal />
-
-        {/* 10. Social Presence */}
-        <SocialPresence />
-
-        {/* 11. Contact & Inquiries */}
-        <ContactSection />
-      </main>
-
-      {/* 12. Minimal Luxury Footer */}
-      <Footer />
+      {/* Fullscreen Image Lightbox Modal */}
+      <ImageModal
+        image={expandedImage}
+        title={expandedTitle}
+        onClose={() => setExpandedImage(null)}
+      />
     </div>
   );
 }

@@ -16,6 +16,11 @@ export const metadata: Metadata = {
     url: `${siteConfig.url}/terms`,
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terms & Conditions & Risk Disclaimers | Eman Trades",
+    description: "Terms and conditions, statutory financial risk disclosures, and IP rights for Eman Trades.",
+  },
 };
 
 export default function TermsPage() {

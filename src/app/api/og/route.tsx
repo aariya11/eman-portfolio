@@ -56,7 +56,7 @@ export async function GET(req: NextRequest) {
                 fontFamily: "monospace",
               }}
             >
-              EMANDTRADES.COM
+              EMANTRADES.COM
             </span>
           </div>
 

@@ -93,7 +93,7 @@ export function ArchiveHoverList({ entries, onSelectEntry }: ArchiveHoverListPro
               >
                 <Image
                   src={entries[hoveredIndex].image}
-                  alt={entries[hoveredIndex].title}
+                  alt={`Institutional market structure and price action case study for ${entries[hoveredIndex].title} (${entries[hoveredIndex].year})`}
                   fill
                   sizes="480px"
                   className="object-cover filter contrast-[1.05]"

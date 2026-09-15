@@ -16,6 +16,11 @@ export const metadata: Metadata = {
     url: `${siteConfig.url}/refund`,
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Refund & Cancellation Policy | Eman Trades",
+    description: "Official Refund and Cancellation Policy governing 1-on-1 trading mentorship programs and educational advisory services.",
+  },
 };
 
 export default function RefundPolicyPage() {

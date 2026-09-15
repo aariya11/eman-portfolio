@@ -16,6 +16,11 @@ export const metadata: Metadata = {
     url: `${siteConfig.url}/cookies`,
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cookie Policy | Eman Trades",
+    description: "Transparent disclosure of our essential functional cookies and local storage tokens.",
+  },
 };
 
 export default function CookiePolicyPage() {

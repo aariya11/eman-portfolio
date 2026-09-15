@@ -16,6 +16,11 @@ export const metadata: Metadata = {
     url: `${siteConfig.url}/privacy`,
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy | Eman Trades",
+    description: "Data collection, processing, and protection practices under GDPR and UAE Data Protection Law.",
+  },
 };
 
 export default function PrivacyPolicyPage() {

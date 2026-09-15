@@ -18,18 +18,42 @@ export function InfoView({ onBackToWork }: InfoViewProps) {
     email: "",
     subject: socialsData.contact.inquiryTypes[0],
     message: "",
+    website_hp: "",
   });
+  const [formError, setFormError] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formState.name || !formState.email || !formState.message) return;
+    setFormError("");
+
+    // Bot trap: silent ignore
+    if (formState.website_hp) {
+      setIsSubmitted(true);
+      return;
+    }
+
+    const trimmedName = formState.name.trim();
+    const trimmedEmail = formState.email.trim();
+    const trimmedMsg = formState.message.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!trimmedName || !trimmedEmail || !trimmedMsg) {
+      setFormError("Please fill out all mandatory fields.");
+      return;
+    }
+
+    if (!emailRegex.test(trimmedEmail)) {
+      setFormError("Please enter a valid email address.");
+      return;
+    }
+
     setIsSubmitting(true);
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-    }, 1000);
+    }, 900);
   };
 
   return (
@@ -181,6 +205,26 @@ export function InfoView({ onBackToWork }: InfoViewProps) {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Anti-spam honeypot */}
+              <div className="hidden" aria-hidden="true">
+                <label htmlFor="website_hp_infoview">Leave blank</label>
+                <input
+                  type="text"
+                  id="website_hp_infoview"
+                  name="website_hp"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={formState.website_hp}
+                  onChange={(e) => setFormState({ ...formState, website_hp: e.target.value })}
+                />
+              </div>
+
+              {formError && (
+                <div role="alert" className="p-2.5 bg-red-950/40 border border-red-500/50 text-red-300 text-xs">
+                  {formError}
+                </div>
+              )}
+
               <div>
                 <label htmlFor="contact-name" className="style-meta-tag block text-white/50 mb-1.5 text-[8.5px]">
                   Name / Entity *

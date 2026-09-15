@@ -5,6 +5,7 @@ import { socialsData } from "@/data/socials";
 import { generateWebPageSchema } from "@/lib/seo";
 import { NotchNavbar } from "@/components/layout/NotchNavbar";
 import { LiquidMetalButton } from "@/components/ui/LiquidMetal";
+import { ContactForm } from "@/components/contact/ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact Trading Desk & Private Advisory",
@@ -126,94 +127,7 @@ export default function ContactPage() {
               Submit Formal Inquiry
             </h2>
 
-            <form
-              action="https://formspree.io/f/placeholder"
-              method="POST"
-              className="space-y-4"
-            >
-              <div className="space-y-1.5">
-                <label htmlFor="contact-name" className="style-meta-tag text-[8px] text-white/50 block uppercase">
-                  Full Name *
-                </label>
-                <input
-                  id="contact-name"
-                  type="text"
-                  name="name"
-                  required
-                  placeholder="E.g., Alexander Vance"
-                  className="w-full bg-black border border-white/20 p-3 text-base sm:text-xs text-white focus:border-white transition-colors outline-none font-sans"
-                />
-              </div>
-
-              <div className="space-y-1.5">
-                <label htmlFor="contact-email" className="style-meta-tag text-[8px] text-white/50 block uppercase">
-                  Corporate / Personal Email *
-                </label>
-                <input
-                  id="contact-email"
-                  type="email"
-                  name="email"
-                  required
-                  placeholder="operator@fund.com"
-                  className="w-full bg-black border border-white/20 p-3 text-base sm:text-xs text-white focus:border-white transition-colors outline-none font-sans"
-                />
-              </div>
-
-              <div className="space-y-1.5">
-                <label htmlFor="contact-type" className="style-meta-tag text-[8px] text-white/50 block uppercase">
-                  Inquiry Purpose *
-                </label>
-                <select
-                  id="contact-type"
-                  name="inquiryType"
-                  className="w-full bg-black border border-white/20 p-3 text-base sm:text-xs text-white focus:border-white transition-colors outline-none font-sans cursor-pointer"
-                >
-                  {socialsData.contact.inquiryTypes.map((type) => (
-                    <option key={type} value={type} className="bg-black text-white">
-                      {type}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div className="space-y-1.5">
-                <label htmlFor="contact-message" className="style-meta-tag text-[8px] text-white/50 block uppercase">
-                  Parameters or Questions *
-                </label>
-                <textarea
-                  id="contact-message"
-                  name="message"
-                  required
-                  rows={4}
-                  placeholder="Outline your background, markets traded, and objectives..."
-                  className="w-full bg-black border border-white/20 p-3 text-base sm:text-xs text-white focus:border-white transition-colors outline-none font-sans resize-none"
-                />
-              </div>
-
-              {/* Form Consent Checkbox */}
-              <div className="pt-2 flex items-start gap-3">
-                <input
-                  id="contact-consent"
-                  type="checkbox"
-                  required
-                  className="mt-1 w-4 h-4 rounded-none bg-black border border-white/30 checked:bg-white checked:border-white"
-                />
-                <label htmlFor="contact-consent" className="style-copy-body text-[11px] text-white/60 leading-normal">
-                  I consent to the collection and processing of my submitted details in accordance with the{" "}
-                  <Link href="/privacy" className="text-white underline hover:text-white/80">
-                    Privacy Policy
-                  </Link>{" "}
-                  for responding to this inquiry.
-                </label>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full py-4 bg-white text-black font-bold text-xs tracking-[0.2em] uppercase hover:bg-neutral-200 transition-colors mt-4"
-              >
-                Transmit Inquiry →
-              </button>
-            </form>
+            <ContactForm />
           </div>
         </section>
 

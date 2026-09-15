@@ -3,6 +3,8 @@ import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import { socialsData } from "@/data/socials";
 import { generateWebPageSchema } from "@/lib/seo";
+import { NotchNavbar } from "@/components/layout/NotchNavbar";
+import { LiquidMetalButton } from "@/components/ui/LiquidMetal";
 
 export const metadata: Metadata = {
   title: "Contact Trading Desk & Private Advisory",
@@ -46,20 +48,8 @@ export default function ContactPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-hairline-b px-4 sm:px-8 py-4 flex items-center justify-between">
-        <Link
-          href="/"
-          className="style-meta-tag text-xs tracking-wider text-white hover:text-white/60 transition-opacity"
-        >
-          ← Eman Trades
-        </Link>
-        <nav aria-label="Breadcrumb navigation" className="style-meta-tag text-[9px] text-white/50 space-x-2">
-          <Link href="/" className="hover:text-white">Home</Link>
-          <span>/</span>
-          <span className="text-white">Contact</span>
-        </nav>
-      </header>
+      {/* Responsive Notched Header */}
+      <NotchNavbar />
 
       <main className="max-w-4xl mx-auto pt-32 sm:pt-36 pb-24 px-4 sm:px-8 space-y-16">
         {/* Title Section */}
@@ -95,15 +85,23 @@ export default function ContactPage() {
               <p className="style-copy-body text-xs text-white/70 leading-relaxed">
                 Connect directly with Eman for questions regarding program availability, session curriculum, and execution playbooks.
               </p>
-              <a
-                href={siteConfig.author.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 w-full px-6 py-3.5 bg-white text-black font-bold text-xs tracking-wider uppercase hover:bg-neutral-200 transition-colors"
-              >
-                <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" aria-hidden="true" />
-                <span>Open WhatsApp Desk →</span>
-              </a>
+              <div className="pt-2">
+                <a
+                  href={siteConfig.author.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full inline-block"
+                  aria-label="Open WhatsApp Desk for Mentorship"
+                >
+                  <LiquidMetalButton
+                    size="md"
+                    className="w-full justify-center"
+                    icon={<span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse block" />}
+                  >
+                    Open WhatsApp Desk →
+                  </LiquidMetalButton>
+                </a>
+              </div>
             </div>
 
             <div className="space-y-3 pt-2">

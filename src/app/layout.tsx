@@ -7,6 +7,7 @@ import { CookieBanner } from "@/components/common/CookieBanner";
 import { Analytics } from "@/components/common/Analytics";
 import { siteConfig } from "@/config/site";
 import { generatePersonSchema, generateWebSiteSchema } from "@/lib/seo";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -118,12 +119,14 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-black text-white antialiased overflow-x-hidden selection:bg-white selection:text-black">
-        <SmoothScroll>
-          <CustomCursor />
-          {children}
-          <CookieBanner />
-          <Analytics />
-        </SmoothScroll>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          <SmoothScroll>
+            <CustomCursor />
+            {children}
+            <CookieBanner />
+            <Analytics />
+          </SmoothScroll>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import { marketWatchData } from "@/data/markets";
 import { generateWebPageSchema } from "@/lib/seo";
+import { NotchNavbar } from "@/components/layout/NotchNavbar";
 
 export const metadata: Metadata = {
   title: "Markets Monitored | Foreign Exchange, Indices & Commodities",
@@ -46,20 +47,8 @@ export default function MarketsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-hairline-b px-4 sm:px-8 py-4 flex items-center justify-between">
-        <Link
-          href="/"
-          className="style-meta-tag text-xs tracking-wider text-white hover:text-white/60 transition-opacity"
-        >
-          ← Eman Trades
-        </Link>
-        <nav aria-label="Breadcrumb navigation" className="style-meta-tag text-[9px] text-white/50 space-x-2">
-          <Link href="/" className="hover:text-white">Home</Link>
-          <span>/</span>
-          <span className="text-white">Markets</span>
-        </nav>
-      </header>
+      {/* Responsive Notched Header */}
+      <NotchNavbar />
 
       <main className="max-w-4xl mx-auto pt-32 sm:pt-36 pb-24 px-4 sm:px-8 space-y-16">
         {/* Title Section */}

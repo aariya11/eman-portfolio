@@ -2,9 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #000000;
-  --foreground: #ffffff;
+:root, .dark {
+  --background: 0 0 0;
+  --foreground: 255 255 255;
+}
+
+.light {
+  --background: 250 250 250;
+  --foreground: 15 15 15;
 }
 
 * {

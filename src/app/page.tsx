@@ -11,6 +11,7 @@ import { InfoView } from "@/components/steven/InfoView";
 import { ImageModal } from "@/components/steven/ImageModal";
 import { stevenProjects, stevenArchiveEntries } from "@/data/stevenProjects";
 import StatsCounter from "@/components/ui/StatsCounter";
+import { LiquidMetalButton } from "@/components/ui/LiquidMetal";
 
 export default function Home() {
   const [currentView, setCurrentView] = useState<"work" | "info">("work");
@@ -201,20 +202,21 @@ export default function Home() {
               </div>
 
               <div className="lg:col-span-4 lg:text-right pt-2 lg:pt-0">
-                <motion.a
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.96 }}
+                <a
                   href="https://wa.me/923156828906?text=Hello%20Eman,%20I%20am%20interested%20in%20your%201-on-1%20Trading%20Mentorship%20program."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-white !text-black font-bold text-xs tracking-[0.2em] uppercase hover:bg-neutral-200 transition-colors shadow-xl focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black outline-none"
-                  data-cursor="pointer"
+                  className="inline-block"
                   aria-label="Get Mentorship via WhatsApp at +92 315 6828906"
+                  data-cursor="pointer"
                 >
-                  <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse shrink-0" aria-hidden="true" />
-                  <span className="!text-black font-bold">GET MENTORSHIP</span>
-                  <span className="!text-black font-bold" aria-hidden="true">→</span>
-                </motion.a>
+                  <LiquidMetalButton
+                    size="lg"
+                    icon={<span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse block" />}
+                  >
+                    GET MENTORSHIP →
+                  </LiquidMetalButton>
+                </a>
               </div>
             </div>
           </motion.section>

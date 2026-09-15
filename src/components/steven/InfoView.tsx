@@ -6,6 +6,7 @@ import { performanceData } from "@/data/performance";
 import { socialsData } from "@/data/socials";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 import { StatsCounter } from "@/components/ui/StatsCounter";
+import { LiquidMetalButton } from "@/components/ui/LiquidMetal";
 
 interface InfoViewProps {
   onBackToWork: () => void;
@@ -134,17 +135,24 @@ export function InfoView({ onBackToWork }: InfoViewProps) {
             <p className="style-copy-body text-white/70 mb-5 leading-relaxed text-[12.5px]">
               Direct one-on-one mentorship covering institutional order delivery, liquidity engineering, and mathematical risk management. Direct desk WhatsApp: +92 315 6828906.
             </p>
-            <a
-              href="https://wa.me/923156828906?text=Hello%20Eman,%20I%20am%20interested%20in%20your%201-on-1%20Trading%20Mentorship%20program."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full py-3.5 px-4 bg-white !text-black font-bold tracking-[0.16em] sm:tracking-[0.2em] text-[10px] sm:text-[11px] hover:bg-neutral-200 transition-colors flex items-center justify-center gap-2 shadow-lg focus-visible:ring-2 focus-visible:ring-white outline-none"
-              data-cursor="pointer"
-              aria-label="Inquire via WhatsApp at +92 315 6828906"
-            >
-              <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse shrink-0" aria-hidden="true" />
-              <span className="!text-black font-bold">INQUIRE VIA WHATSAPP</span>
-            </a>
+            <div className="pt-2">
+              <a
+                href="https://wa.me/923156828906?text=Hello%20Eman,%20I%20am%20interested%20in%20your%201-on-1%20Trading%20Mentorship%20program."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full inline-block"
+                data-cursor="pointer"
+                aria-label="Inquire via WhatsApp at +92 315 6828906"
+              >
+                <LiquidMetalButton
+                  size="md"
+                  className="w-full justify-center"
+                  icon={<span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse block" />}
+                >
+                  INQUIRE VIA WHATSAPP →
+                </LiquidMetalButton>
+              </a>
+            </div>
           </div>
 
           <div className="border border-white/15 p-5 sm:p-8 bg-black overflow-hidden max-w-full">

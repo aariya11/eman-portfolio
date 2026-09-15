@@ -3,6 +3,7 @@ import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import { performanceData } from "@/data/performance";
 import { generateWebPageSchema } from "@/lib/seo";
+import StatsCounter from "@/components/ui/StatsCounter";
 
 export const metadata: Metadata = {
   title: "Audited Performance & Risk Statistics",
@@ -93,7 +94,11 @@ export default function PerformancePage() {
                   {m.label}
                 </span>
                 <p className="font-editorial italic text-3xl font-light text-white">
-                  {m.value}{m.unit || ""}
+                  {m.id === "win-rate" && <StatsCounter value={64.2} suffix="%" decimals={1} />}
+                  {m.id === "profit-factor" && <StatsCounter value={2.41} decimals={2} />}
+                  {m.id === "avg-rr" && <StatsCounter value={2.85} prefix="1:" decimals={2} />}
+                  {m.id === "max-drawdown" && <StatsCounter value={4.8} suffix="%" decimals={1} />}
+                  {m.id === "trades-executed" && <StatsCounter value={648} suffix="+" decimals={0} />}
                 </p>
                 <p className="style-copy-body text-[8.5px] text-white/50">
                   {m.verificationSource}

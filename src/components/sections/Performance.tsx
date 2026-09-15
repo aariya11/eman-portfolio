@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { performanceData, EquityDataPoint } from "@/data/performance";
 import { AlertCircle, CheckCircle2, TrendingUp, BarChart2 } from "lucide-react";
+import { StatsCounter } from "@/components/ui/StatsCounter";
 
 export function Performance() {
   const [hoveredPoint, setHoveredPoint] = useState<EquityDataPoint | null>(null);
@@ -81,8 +82,11 @@ export function Performance() {
                   {m.label}
                 </span>
                 <div className="font-serif text-4xl text-ivory mb-2 flex items-baseline">
-                  <span>{m.value}</span>
-                  {m.unit && <span className="text-xl text-champagne ml-1">{m.unit}</span>}
+                  {m.id === "win-rate" && <StatsCounter value={64.2} suffix="%" decimals={1} />}
+                  {m.id === "profit-factor" && <StatsCounter value={2.41} decimals={2} />}
+                  {m.id === "avg-rr" && <StatsCounter value={2.85} prefix="1:" decimals={2} />}
+                  {m.id === "max-drawdown" && <StatsCounter value={4.8} suffix="%" decimals={1} />}
+                  {m.id === "trades-executed" && <StatsCounter value={648} suffix="+" decimals={0} />}
                 </div>
                 <p className="font-sans text-xs text-ivory-muted leading-relaxed">
                   {m.subtext}

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { performanceData } from "@/data/performance";
 import { socialsData } from "@/data/socials";
 import { CheckCircle2, ArrowRight } from "lucide-react";
+import { StatsCounter } from "@/components/ui/StatsCounter";
 
 interface InfoViewProps {
   onBackToWork: () => void;
@@ -98,7 +99,11 @@ export function InfoView({ onBackToWork }: InfoViewProps) {
                     {m.label}
                   </span>
                   <p className="font-editorial italic text-3xl font-light text-white">
-                    {m.value}{m.unit || ""}
+                    {m.id === "win-rate" && <StatsCounter value={64.2} suffix="%" decimals={1} />}
+                    {m.id === "profit-factor" && <StatsCounter value={2.41} decimals={2} />}
+                    {m.id === "avg-rr" && <StatsCounter value={2.85} prefix="1:" decimals={2} />}
+                    {m.id === "max-drawdown" && <StatsCounter value={4.8} suffix="%" decimals={1} />}
+                    {m.id === "trades-executed" && <StatsCounter value={648} suffix="+" decimals={0} />}
                   </p>
                   <p className="style-copy-body text-[8px] text-white/40">
                     {m.verificationSource}

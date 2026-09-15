@@ -3,6 +3,7 @@ import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import { profileData } from "@/data/profile";
 import { generateWebPageSchema } from "@/lib/seo";
+import StatsCounter from "@/components/ui/StatsCounter";
 
 export const metadata: Metadata = {
   title: "About the Desk & Institutional Methodology",
@@ -108,7 +109,13 @@ export default function AboutPage() {
                   {m.label}
                 </span>
                 <p className="font-editorial italic text-2xl sm:text-3xl font-light text-white">
-                  {m.value}
+                  {m.label === "YEARS IN MARKETS" ? (
+                    <StatsCounter value={8} prefix="0" suffix="+" decimals={0} />
+                  ) : m.label === "MARKETS MONITORED" ? (
+                    <StatsCounter value={5} prefix="0" decimals={0} />
+                  ) : (
+                    m.value
+                  )}
                 </p>
                 <p className="style-copy-body text-[8.5px] text-white/50 leading-tight">
                   {m.caption}

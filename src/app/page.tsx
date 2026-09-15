@@ -10,6 +10,7 @@ import { ArchiveHoverList } from "@/components/steven/ArchiveHoverList";
 import { InfoView } from "@/components/steven/InfoView";
 import { ImageModal } from "@/components/steven/ImageModal";
 import { stevenProjects, stevenArchiveEntries } from "@/data/stevenProjects";
+import StatsCounter from "@/components/ui/StatsCounter";
 
 export default function Home() {
   const [currentView, setCurrentView] = useState<"work" | "info">("work");
@@ -117,6 +118,65 @@ export default function Home() {
               onSelectEntry={(entry) => handleExpandSlide(entry.image, entry.title)}
             />
           </section>
+
+          {/* Institutional Audited Ledger Summary with Animated StatsCounter */}
+          <motion.section
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+            aria-label="Audited Performance Summary"
+            className="w-full max-w-[1080px] mx-auto py-16 sm:py-20 px-4 sm:px-8 md:px-10 border-hairline-t"
+          >
+            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 mb-8">
+              <span className="style-meta-tag block text-white/50 text-[9px] tracking-[0.22em] uppercase">
+                Audited Performance Summary • 2023–2025 Ledger
+              </span>
+              <Link
+                href="/performance"
+                className="style-meta-tag text-[9px] text-white/40 hover:text-white transition-colors tracking-wider underline decoration-white/30 underline-offset-4"
+              >
+                Inspect Complete Statistical Ledger →
+              </Link>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+              <div className="space-y-1 border border-white/10 p-4 bg-white/[0.02]">
+                <span className="style-meta-tag text-[7.5px] block text-white/35 uppercase">WIN RATE</span>
+                <p className="font-editorial italic text-3xl font-light text-white">
+                  <StatsCounter value={64.2} suffix="%" decimals={1} />
+                </p>
+                <p className="style-copy-body text-[8px] text-white/40">Verified Execution Log</p>
+              </div>
+              <div className="space-y-1 border border-white/10 p-4 bg-white/[0.02]">
+                <span className="style-meta-tag text-[7.5px] block text-white/35 uppercase">PROFIT FACTOR</span>
+                <p className="font-editorial italic text-3xl font-light text-white">
+                  <StatsCounter value={2.41} decimals={2} />
+                </p>
+                <p className="style-copy-body text-[8px] text-white/40">Multi-Broker Clearing</p>
+              </div>
+              <div className="space-y-1 border border-white/10 p-4 bg-white/[0.02]">
+                <span className="style-meta-tag text-[7.5px] block text-white/35 uppercase">AVERAGE R:R</span>
+                <p className="font-editorial italic text-3xl font-light text-white">
+                  <StatsCounter value={2.85} prefix="1:" decimals={2} />
+                </p>
+                <p className="style-copy-body text-[8px] text-white/40">Asymmetric Payoff Horizon</p>
+              </div>
+              <div className="space-y-1 border border-white/10 p-4 bg-white/[0.02]">
+                <span className="style-meta-tag text-[7.5px] block text-white/35 uppercase">MAX DRAWDOWN</span>
+                <p className="font-editorial italic text-3xl font-light text-white">
+                  <StatsCounter value={4.8} suffix="%" decimals={1} />
+                </p>
+                <p className="style-copy-body text-[8px] text-white/40">Fixed 1.0% Allocation</p>
+              </div>
+              <div className="space-y-1 border border-white/10 p-4 bg-white/[0.02] col-span-2 sm:col-span-1">
+                <span className="style-meta-tag text-[7.5px] block text-white/35 uppercase">TRADES LOGGED</span>
+                <p className="font-editorial italic text-3xl font-light text-white">
+                  <StatsCounter value={648} suffix="+" decimals={0} />
+                </p>
+                <p className="style-copy-body text-[8px] text-white/40">Audited Historical Ledger</p>
+              </div>
+            </div>
+          </motion.section>
 
           {/* Private Mentorship CTA Section with Scroll Reveal */}
           <motion.section
